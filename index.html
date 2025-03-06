@@ -380,8 +380,7 @@
                 EI
         </div>
               <span class="ml-2 text-xl font-semibold text-secondary-900"
-                >E-Invoice</span
-              >
+                >E-Invoice</span>
             </a>
               </div>
 
@@ -577,175 +576,158 @@
         </div>
       </section>
 
-            <!-- Features Section -->
-      <section id="features" class="py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Features Section -->
+      <section id="features" class="relative py-20 overflow-hidden">
+        <!-- Subtle background pattern -->
+        <div class="absolute inset-0 bg-gradient-to-b from-white to-gray-50">
+          <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#4F46E5 1px, transparent 1px); background-size: 30px 30px;"></div>
+                </div>
+
+        <!-- Decorative elements -->
+        <div class="absolute top-40 left-0 w-64 h-64 bg-primary-100 rounded-full mix-blend-multiply opacity-30 blur-3xl"></div>
+        <div class="absolute bottom-20 right-0 w-80 h-80 bg-blue-100 rounded-full mix-blend-multiply opacity-30 blur-3xl"></div>
+        
+        <div class="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <!-- Section label -->
+            <div class="inline-block mb-4 px-3 py-1 bg-gradient-to-r from-primary-500/10 to-blue-500/10 rounded-full backdrop-blur-sm border border-primary-200">
+              <span class="text-sm font-medium bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent">
+                Key Features
+        </span>
+        </div>
+            
             <h2 class="text-3xl sm:text-4xl font-bold text-secondary-900">
               Streamline Your E-Invoicing Workflow
-                  </h2>
+              </h2>
             <p class="mt-4 text-xl text-secondary-600">
               Our platform offers a comprehensive suite of tools to simplify the
               entire e-invoicing process.
-                  </p>
-                </div>
+            </p>
+          </div>
 
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Feature 1 -->
-            <div
-              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
-                      data-aos="fade-up"
-                      data-aos-delay="100"
-                    >
-                      <div
-                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
-                      >
-                        <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 text-primary-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                      </div>
-              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
-                Invoice Creation
-              </h3>
-              <p class="text-secondary-600">
-                Easily create standardized e-invoices from CSV, Excel, or manual
-                input. Our platform converts your data into compliant UBL XML
-                format.
-              </p>
-                          <a
-                            href="#"
-                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
-              >
-                Learn more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-                    </div>
+            <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+              <!-- Card glow effect on hover -->
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+              
+              <div class="relative bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:border-transparent transition-all duration-300 flex flex-col h-full">
+                <!-- Top gradient bar -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-xl"></div>
+                
+                <!-- Icon with gradient background -->
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 p-0.5 mb-6">
+                  <div class="w-full h-full rounded-xl bg-white flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Content -->
+                <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                  Invoice Creation
+                </h3>
+                <p class="text-secondary-600 flex-grow">
+                  Easily create standardized e-invoices from CSV, Excel, or manual
+                  input. Our platform converts your data into compliant UBL XML
+                  format.
+                </p>
+                
+                <!-- Animated link -->
+                <a href="#" class="group/link inline-flex items-center mt-6 text-primary-600 hover:text-primary-700 font-medium">
+                  <span class="relative">
+                    Learn more
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover/link:w-full transition-all duration-300"></span>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
 
             <!-- Feature 2 -->
-                    <div
-              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      <div
-                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
-                      >
-                        <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 text-primary-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                          />
-                        </svg>
-                      </div>
-              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
-                Invoice Validation
-              </h3>
-              <p class="text-secondary-600">
-                Validate your e-invoices against Australian standards to ensure
-                compliance. Get detailed reports on any issues found.
-              </p>
-                          <a
-                            href="#"
-                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
-              >
-                Learn more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-                    </div>
+            <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+              <!-- Card glow effect on hover -->
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+              
+              <div class="relative bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:border-transparent transition-all duration-300 flex flex-col h-full">
+                <!-- Top gradient bar -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-xl"></div>
+                
+                <!-- Icon with gradient background -->
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 p-0.5 mb-6">
+                  <div class="w-full h-full rounded-xl bg-white flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Content -->
+                <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                  Invoice Validation
+                </h3>
+                <p class="text-secondary-600 flex-grow">
+                  Validate your e-invoices against Australian standards to ensure
+                  compliance. Get detailed reports on any issues found.
+                </p>
+                
+                <!-- Animated link -->
+                <a href="#" class="group/link inline-flex items-center mt-6 text-primary-600 hover:text-primary-700 font-medium">
+                  <span class="relative">
+                    Learn more
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover/link:w-full transition-all duration-300"></span>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
 
             <!-- Feature 3 -->
-                    <div
-              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
-                      data-aos="fade-up"
-                      data-aos-delay="300"
-                    >
-                      <div
-                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
-                      >
-                        <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8 text-primary-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                      </div>
-              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
-                Invoice Sending
-              </h3>
-              <p class="text-secondary-600">
-                Send your e-invoices securely via email or SFTP. Track delivery
-                status and maintain a complete history of sent invoices.
-              </p>
-                          <a
-                            href="#"
-                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
-              >
-                Learn more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5 ml-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
-                    </div>
+            <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+              <!-- Card glow effect on hover -->
+              <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+              
+              <div class="relative bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:border-transparent transition-all duration-300 flex flex-col h-full">
+                <!-- Top gradient bar -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-xl"></div>
+                
+                <!-- Icon with gradient background -->
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-50 to-blue-50 p-0.5 mb-6">
+                  <div class="w-full h-full rounded-xl bg-white flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
                 </div>
+                
+                <!-- Content -->
+                <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                  Invoice Sending
+                </h3>
+                <p class="text-secondary-600 flex-grow">
+                  Send your e-invoices securely via email or SFTP. Track delivery
+                  status and maintain a complete history of sent invoices.
+                </p>
+                
+                <!-- Animated link -->
+                <a href="#" class="group/link inline-flex items-center mt-6 text-primary-600 hover:text-primary-700 font-medium">
+                  <span class="relative">
+                    Learn more
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover/link:w-full transition-all duration-300"></span>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transform group-hover/link:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
               </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- How It Works Section -->
