@@ -580,6 +580,7 @@
       <section id="features" class="relative py-20 overflow-hidden">
         <!-- Subtle background pattern -->
         <div class="absolute inset-0 bg-gradient-to-b from-white to-gray-50">
+          <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#4F46E5 1px, transparent 1px), linear-gradient(to right, #4F46E5 1px, transparent 1px); background-size: 40px 40px;"></div>
           <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#4F46E5 1px, transparent 1px); background-size: 30px 30px;"></div>
                 </div>
 
@@ -731,104 +732,274 @@
       </section>
 
       <!-- How It Works Section -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16" data-aos="fade-up">
+    <section class="relative py-24 overflow-hidden">
+      <!-- Premium background with subtle patterns -->
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#4F46E5 1px, transparent 1px), linear-gradient(to right, #4F46E5 1px, transparent 1px); background-size: 40px 40px;"></div>
+      
+      <!-- Decorative elements -->
+      <div class="absolute -top-40 -left-40 w-96 h-96 bg-primary-100 rounded-full mix-blend-multiply opacity-30 blur-3xl"></div>
+      <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply opacity-30 blur-3xl"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-20" data-aos="fade-up">
+          <!-- Section label -->
+          <div class="inline-block mb-4 px-3 py-1 bg-gradient-to-r from-primary-500/10 to-blue-500/10 rounded-full backdrop-blur-sm border border-primary-200">
+            <span class="text-sm font-medium bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent">
+              Simple Process
+            </span>
+          </div>
+          
           <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
             How E-Invoicing Works
-                </h2>
+          </h2>
           <p class="max-w-2xl mx-auto text-lg text-gray-600">
             Our platform simplifies the e-invoicing process with three easy steps, saving you time and ensuring compliance.
           </p>
-                </div>
+        </div>
 
         <div class="relative">
-          <!-- Process Steps Timeline -->
-          <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-100"></div>
+          <!-- Process Steps Timeline - Gradient line -->
+          <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-300 via-primary-500 to-blue-500 rounded-full"></div>
 
           <!-- Step 1 -->
-          <div class="relative mb-16 md:mb-0" data-aos="fade-right" data-aos-delay="100">
+          <div class="relative mb-24 md:mb-32" data-aos="fade-right" data-aos-delay="100">
             <div class="flex flex-col md:flex-row items-center">
-              <div class="md:w-1/2 md:pr-12 md:text-right">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <div class="flex items-center justify-end mb-4">
-                    <h3 class="text-xl font-bold text-gray-900 mr-4">Create</h3>
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                </svg>
-              </div>
-            </div>
-                  <p class="text-gray-600">
-                    Create e-invoices by uploading CSV/Excel files, filling out a form, or extracting data from PDFs. Our system converts your data into standardized UBL XML format.
-                  </p>
+              <div class="md:w-1/2 md:pr-16 md:text-right">
+                <!-- Premium card design -->
+                <div class="group relative">
+                  <!-- Card glow effect -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+                  
+                  <div class="relative bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 transform group-hover:-translate-y-1">
+                    <!-- Top accent line -->
+                    <div class="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-2xl"></div>
+                    
+                    <!-- Icon with number -->
+                    <div class="flex items-center justify-end mb-6">
+                      <h3 class="text-2xl font-bold text-gray-900 mr-5">Create</h3>
+                      <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-blue-500 rounded-full blur-sm opacity-70"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 text-white shadow-lg">
+                          <span class="absolute text-xs font-bold -top-1 -right-1 bg-white text-primary-600 w-6 h-6 rounded-full flex items-center justify-center shadow-sm">1</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                      Create e-invoices by uploading CSV/Excel files, filling out a form, or extracting data from PDFs. Our system converts your data into standardized UBL XML format.
+                    </p>
+                    
+                    <!-- Feature list -->
+                    <div class="mt-6 space-y-2 text-right">
+                      <div class="flex items-center justify-end text-sm text-gray-500">
+                        <span>Multiple input formats</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <div class="flex items-center justify-end text-sm text-gray-500">
+                        <span>UBL XML conversion</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="hidden md:flex md:w-12 md:justify-center relative">
-                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+              
+              <!-- Timeline node -->
+              <div class="hidden md:flex md:w-12 md:justify-center relative z-10">
+                <div class="absolute w-24 h-24 bg-primary-50 rounded-full opacity-70 transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative h-14 w-14 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 border-4 border-white shadow-lg flex items-center justify-center text-white font-bold">
                   1
                 </div>
               </div>
-              <div class="md:w-1/2 mt-8 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Create invoices" class="rounded-lg shadow-lg" />
-          </div>
-        </div>
-      </div>
-
-          <!-- Step 2 -->
-          <div class="relative mb-16 md:mb-0 pt-16" data-aos="fade-left" data-aos-delay="200">
-            <div class="flex flex-col md:flex-row items-center">
-              <div class="md:w-1/2 md:order-last md:pl-12">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <div class="flex items-center mb-4">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-        </div>
-                    <h3 class="text-xl font-bold text-gray-900">Validate</h3>
+              
+              <!-- Image with premium styling -->
+              <div class="md:w-1/2 mt-12 md:mt-0">
+                <div class="relative">
+                  <!-- Image glow -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-2xl opacity-70 blur-lg"></div>
+                  
+                  <!-- Image container -->
+                  <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Create invoices" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" />
+                    
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/30 to-transparent"></div>
+                    
+                    <!-- Label -->
+                    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                      <span class="text-sm font-medium text-primary-700">Step 1: Create</span>
+                    </div>
                   </div>
-                  <p class="text-gray-600">
-                    Ensure your invoices comply with Australian e-invoicing standards. Our validation system checks for wellformedness, syntax rules, and PEPPOL compliance.
-                  </p>
                 </div>
               </div>
-              <div class="hidden md:flex md:w-12 md:justify-center relative">
-                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative mb-24 md:mb-32" data-aos="fade-left" data-aos-delay="200">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:order-last md:pl-16">
+                <!-- Premium card design -->
+                <div class="group relative">
+                  <!-- Card glow effect -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+                  
+                  <div class="relative bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 transform group-hover:-translate-y-1">
+                    <!-- Top accent line -->
+                    <div class="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-2xl"></div>
+                    
+                    <!-- Icon with number -->
+                    <div class="flex items-center mb-6">
+                      <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-blue-500 rounded-full blur-sm opacity-70"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 text-white shadow-lg">
+                          <span class="absolute text-xs font-bold -top-1 -right-1 bg-white text-primary-600 w-6 h-6 rounded-full flex items-center justify-center shadow-sm">2</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </div>
+                      <h3 class="text-2xl font-bold text-gray-900 ml-5">Validate</h3>
+                    </div>
+                    
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                      Ensure your invoices comply with Australian e-invoicing standards. Our validation system checks for wellformedness, syntax rules, and PEPPOL compliance.
+                    </p>
+                    
+                    <!-- Feature list -->
+                    <div class="mt-6 space-y-2">
+                      <div class="flex items-center text-sm text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Australian standards compliance</span>
+                      </div>
+                      <div class="flex items-center text-sm text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Detailed error reporting</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Timeline node -->
+              <div class="hidden md:flex md:w-12 md:justify-center relative z-10">
+                <div class="absolute w-24 h-24 bg-primary-50 rounded-full opacity-70 transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative h-14 w-14 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 border-4 border-white shadow-lg flex items-center justify-center text-white font-bold">
                   2
                 </div>
               </div>
-              <div class="md:w-1/2 md:order-first mt-8 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Validate invoices" class="rounded-lg shadow-lg" />
-              </div>
-            </div>
-            </div>
-
-          <!-- Step 3 -->
-          <div class="relative pt-16" data-aos="fade-right" data-aos-delay="300">
-            <div class="flex flex-col md:flex-row items-center">
-              <div class="md:w-1/2 md:pr-12 md:text-right">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                  <div class="flex items-center justify-end mb-4">
-                    <h3 class="text-xl font-bold text-gray-900 mr-4">Send</h3>
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
+              
+              <!-- Image with premium styling -->
+              <div class="md:w-1/2 md:order-first mt-12 md:mt-0">
+                <div class="relative">
+                  <!-- Image glow -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-2xl opacity-70 blur-lg"></div>
+                  
+                  <!-- Image container -->
+                  <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Validate invoices" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" />
+                    
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/30 to-transparent"></div>
+                    
+                    <!-- Label -->
+                    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                      <span class="text-sm font-medium text-primary-700">Step 2: Validate</span>
+                    </div>
                   </div>
                 </div>
-                  <p class="text-gray-600">
-                    Transmit your e-invoices securely via email or SFTP. Track delivery status and maintain a complete history of all sent invoices for easy reference.
-                  </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative" data-aos="fade-right" data-aos-delay="300">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-16 md:text-right">
+                <!-- Premium card design -->
+                <div class="group relative">
+                  <!-- Card glow effect -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-70 blur-lg transition duration-500 group-hover:duration-200"></div>
+                  
+                  <div class="relative bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:border-transparent transition-all duration-300 transform group-hover:-translate-y-1">
+                    <!-- Top accent line -->
+                    <div class="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-t-2xl"></div>
+                    
+                    <!-- Icon with number -->
+                    <div class="flex items-center justify-end mb-6">
+                      <h3 class="text-2xl font-bold text-gray-900 mr-5">Send</h3>
+                      <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary-500 to-blue-500 rounded-full blur-sm opacity-70"></div>
+                        <div class="relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 text-white shadow-lg">
+                          <span class="absolute text-xs font-bold -top-1 -right-1 bg-white text-primary-600 w-6 h-6 rounded-full flex items-center justify-center shadow-sm">3</span>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                      Transmit your e-invoices securely via email or SFTP. Track delivery status and maintain a complete history of all sent invoices for easy reference.
+                    </p>
+                    
+                    <!-- Feature list -->
+                    <div class="mt-6 space-y-2 text-right">
+                      <div class="flex items-center justify-end text-sm text-gray-500">
+                        <span>Email & SFTP delivery</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <div class="flex items-center justify-end text-sm text-gray-500">
+                        <span>Delivery tracking</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="hidden md:flex md:w-12 md:justify-center relative">
-                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+              
+              <!-- Timeline node -->
+              <div class="hidden md:flex md:w-12 md:justify-center relative z-10">
+                <div class="absolute w-24 h-24 bg-primary-50 rounded-full opacity-70 transform -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative h-14 w-14 rounded-full bg-gradient-to-br from-primary-500 to-blue-500 border-4 border-white shadow-lg flex items-center justify-center text-white font-bold">
                   3
                 </div>
               </div>
-              <div class="md:w-1/2 mt-8 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Send invoices" class="rounded-lg shadow-lg" />
+              
+              <!-- Image with premium styling -->
+              <div class="md:w-1/2 mt-12 md:mt-0">
+                <div class="relative">
+                  <!-- Image glow -->
+                  <div class="absolute -inset-1 bg-gradient-to-r from-primary-500 to-blue-500 rounded-2xl opacity-70 blur-lg"></div>
+                  
+                  <!-- Image container -->
+                  <div class="relative rounded-2xl overflow-hidden shadow-xl border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Send invoices" class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500" />
+                    
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/30 to-transparent"></div>
+                    
+                    <!-- Label -->
+                    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                      <span class="text-sm font-medium text-primary-700">Step 3: Send</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -838,6 +1009,7 @@
 
     <!-- Testimonials Section -->
     <section class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#4F46E5 1px, transparent 1px), linear-gradient(to right, #4F46E5 1px, transparent 1px); background-size: 40px 40px;"></div>
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16" data-aos="fade-up">
           <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
