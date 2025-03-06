@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Invoicing Platform UI Design</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <!-- Poppins font for headings -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    />
+    <!-- Heroicons -->
+    <script src="https://unpkg.com/heroicons@2.0.18/dist/solid.min.js"></script>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+        background-color: #f0f2f5;
+        padding: 40px;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Figma-like frame styling */
+      .figma-frame {
+        position: relative;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 40px;
+        overflow: hidden;
+      }
+
+      /* Page identifier styles - outside the frame */
+      .page-identifier {
+        position: sticky;
+        top: 20px;
+        left: 20px;
+        background-color: #4F46E5;
+        color: white;
+        padding: 8px 16px;
+        font-size: 14px;
+        border-radius: 6px;
+        z-index: 1000;
+        font-weight: 500;
+        margin-bottom: 16px;
+        display: inline-block;
+        box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
+      }
+      
+      /* Route indicator */
+      .route-indicator {
+        font-family: 'Courier New', monospace;
+        background-color: #1E293B;
+        color: #94A3B8;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        margin-bottom: 16px;
+        display: inline-block;
+      }
+      
+      /* Design notes */
+      .design-notes {
+        background-color: #FFFBEB;
+        border-left: 4px solid #F59E0B;
+        padding: 16px;
+        margin-bottom: 20px;
+        border-radius: 0 6px 6px 0;
+      }
+      
+      .design-notes h3 {
+        color: #92400E;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+      
+      .design-notes p {
+        color: #78350F;
+        margin: 0;
+      }
+      
+      .page-container {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+      .page-title {
+        border-bottom: 1px solid #e5e7eb;
+        padding: 16px 24px;
+        background-color: #f9fafb;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .page-content {
+        padding: 24px;
+        background-color: white;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+      .section-title {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #6366f1;
+        color: #4f46e5;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+      .hero-blob {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        z-index: -1;
+        animation: blob-movement 20s infinite alternate ease-in-out;
+      }
+      .blob-1 {
+        background: linear-gradient(45deg, #7c3aed, #2563eb);
+        top: -200px;
+        right: -100px;
+      }
+      .blob-2 {
+        background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+        bottom: -200px;
+        left: -100px;
+      }
+      @keyframes blob-movement {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(50px, 20px) scale(1.1);
+        }
+        100% {
+          transform: translate(-30px, -20px) scale(0.9);
+        }
+      }
+      .feature-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+      }
+      .feature-icon {
+        position: relative;
+        z-index: 10;
+      }
+      .feature-icon::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(124, 58, 237, 0.1);
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.3s ease;
+        z-index: -1;
+      }
+      .feature-card:hover .feature-icon::before {
+        transform: scale(2.5);
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #7c3aed, #6d28d9);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: all 0.6s ease;
+      }
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      .logo-container {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-text {
+        font-weight: 800;
+        font-size: 1.5rem;
+        background: linear-gradient(90deg, #7c3aed, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .stats-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+      }
+      .stats-container::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          transparent,
+          rgba(124, 58, 237, 0.1),
+          transparent 30%
+        );
+        animation: rotate 4s linear infinite;
+      }
+      @keyframes rotate {
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+
+      /* Page identifier styles */
+      .page-identifier {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(79, 70, 229, 0.9);
+        color: white;
+        padding: 4px 12px;
+        font-size: 12px;
+        border-bottom-right-radius: 8px;
+        z-index: 1000;
+        font-weight: 500;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                200: "#c7d2fe",
+                300: "#a5b4fc",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                700: "#4338ca",
+                800: "#3730a3",
+                900: "#312e81",
+                950: "#1e1b4b",
+              },
+              secondary: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+                950: "#020617",
+              },
+            },
+            animation: {
+              float: "float 3s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-secondary-800">
+    <!-- Page Identifier - Outside the frame -->
+  <div class="page-identifier">
+    <div>Landing Page</div>
+  </div>
+
+  <!-- Route Indicator - Outside the frame -->
+  <div class="route-indicator">
+    Route: /
+  </div>
+
+  <!-- Design Notes - Outside the frame -->
+  <div class="design-notes">
+    <h3>Design Notes</h3>
+    <p>This is a design reference for the E-Invoicing Platform landing page. The layout, colors, and components should be implemented as shown. Animations should be smooth and subtle.</p>
+  </div>
+  <div class="figma-frame">
+    <!-- Header -->
+    <header
+      class=" bg-white/90 backdrop-blur-sm z-50 border-b border-secondary-200"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="#" class="flex items-center">
+              <div
+                class="w-10 h-10 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-xl"
+              >
+                EI
+        </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900"
+                >E-Invoice</span
+              >
+            </a>
+              </div>
+
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#features"
+              class="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+                >Features</a
+              >
+              <a
+              href="#how-it-works"
+              class="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+              >How It Works</a
+            >
+            <a
+              href="#pricing"
+              class="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+              >About Us</a
+            >
+            <a
+              href="#contact"
+              class="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- Auth Buttons -->
+            <div class="flex items-center space-x-4">
+              <a
+                href="#"
+              class="hidden sm:inline-block text-secondary-700 hover:text-primary-600 font-medium text-sm"
+              >Sign In</a
+              >
+              <a
+                href="#"
+              class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md"
+            >
+              Get Started
+            </a>
+
+            <!-- Mobile menu button -->
+            <button
+              type="button"
+              class="md:hidden text-secondary-500 hover:text-secondary-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+            </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+          <!-- Hero Section -->
+      <section class="pt-32 pb-20 bg-gradient-to-b from-primary-50 to-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row items-center">
+            <div
+              class="lg:w-1/2 lg:pr-12"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              <h1
+                class="text-4xl sm:text-5xl md:text-6xl font-bold text-secondary-900 leading-tight"
+              >
+                Simplify Your
+                <span class="text-primary-600">E-Invoicing</span> Process
+                    </h1>
+              <p class="mt-6 text-xl text-secondary-600 max-w-2xl">
+                A powerful platform designed for SMEs to create, validate, and
+                send e-invoices that comply with Australian standards.
+              </p>
+              <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                      <a
+                        href="#"
+                  class="inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 shadow-sm hover:shadow-lg transition-all"
+                >
+                  Get Started Free
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 ml-2"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                <a
+                  href="#how-it-works"
+                  class="inline-flex justify-center items-center px-6 py-3 border border-secondary-300 text-base font-medium rounded-lg text-secondary-700 bg-white hover:bg-secondary-50 shadow-sm hover:shadow-md transition-all"
+                >
+                  Learn More
+                </a>
+                      </div>
+              <div class="mt-8 flex items-center">
+                <div class="flex -space-x-2">
+                  <img
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                    src="https://randomuser.me/api/portraits/women/32.jpg"
+                    alt="User"
+                  />
+                  <img
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                    src="https://randomuser.me/api/portraits/men/45.jpg"
+                    alt="User"
+                  />
+                  <img
+                    class="w-10 h-10 rounded-full border-2 border-white"
+                    src="https://randomuser.me/api/portraits/women/53.jpg"
+                    alt="User"
+                  />
+                        </div>
+                <div class="ml-4">
+                  <div class="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-yellow-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-yellow-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-yellow-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-yellow-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5 text-yellow-400"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="text-sm text-secondary-600">
+                    Trusted by <span class="font-medium">100+</span> SMEs
+                  </p>
+                </div>
+              </div>
+                  </div>
+                  <div
+              class="lg:w-1/2 mt-12 lg:mt-0"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              <div class="relative">
+                <div
+                  class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-blue-400 rounded-lg blur-lg opacity-30 animate-pulse"
+                ></div>
+                <div
+                  class="relative bg-white rounded-lg shadow-xl overflow-hidden border border-secondary-200"
+                >
+                  <div class="p-1 bg-secondary-100">
+                    <div class="flex space-x-1">
+                      <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                  </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="E-Invoicing Dashboard"
+                    class="w-full h-auto object-cover"
+                    style="max-height: 400px"
+                  />
+                  </div>
+                  <div
+                  class="absolute -bottom-6 -right-6 w-24 h-24 bg-primary-100 rounded-full flex items-center justify-center animate-float"
+                >
+                  <div
+                    class="w-20 h-20 bg-primary-200 rounded-full flex items-center justify-center"
+                  >
+                    <div
+                      class="w-16 h-16 bg-primary-300 rounded-full flex items-center justify-center text-primary-800 font-bold"
+                    >
+                      Easy
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- Features Section -->
+      <section id="features" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+            <h2 class="text-3xl sm:text-4xl font-bold text-secondary-900">
+              Streamline Your E-Invoicing Workflow
+                  </h2>
+            <p class="mt-4 text-xl text-secondary-600">
+              Our platform offers a comprehensive suite of tools to simplify the
+              entire e-invoicing process.
+                  </p>
+                </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Feature 1 -->
+            <div
+              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
+                      data-aos="fade-up"
+                      data-aos-delay="100"
+                    >
+                      <div
+                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
+                      >
+                        <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8 text-primary-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                      </div>
+              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                Invoice Creation
+              </h3>
+              <p class="text-secondary-600">
+                Easily create standardized e-invoices from CSV, Excel, or manual
+                input. Our platform converts your data into compliant UBL XML
+                format.
+              </p>
+                          <a
+                            href="#"
+                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 ml-1"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+                    </div>
+
+            <!-- Feature 2 -->
+                    <div
+              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
+                      data-aos="fade-up"
+                      data-aos-delay="200"
+                    >
+                      <div
+                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
+                      >
+                        <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8 text-primary-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                          />
+                        </svg>
+                      </div>
+              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                Invoice Validation
+              </h3>
+              <p class="text-secondary-600">
+                Validate your e-invoices against Australian standards to ensure
+                compliance. Get detailed reports on any issues found.
+              </p>
+                          <a
+                            href="#"
+                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 ml-1"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+                    </div>
+
+            <!-- Feature 3 -->
+                    <div
+              class="bg-white rounded-xl p-8 shadow-sm border border-secondary-200 hover:shadow-md transition-shadow"
+                      data-aos="fade-up"
+                      data-aos-delay="300"
+                    >
+                      <div
+                class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6"
+                      >
+                        <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8 text-primary-600"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          />
+                        </svg>
+                      </div>
+              <h3 class="text-xl font-semibold text-secondary-900 mb-3">
+                Invoice Sending
+              </h3>
+              <p class="text-secondary-600">
+                Send your e-invoices securely via email or SFTP. Track delivery
+                status and maintain a complete history of sent invoices.
+              </p>
+                          <a
+                            href="#"
+                class="inline-flex items-center mt-4 text-primary-600 hover:text-primary-700 font-medium"
+              >
+                Learn more
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 ml-1"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+                    </div>
+                </div>
+              </div>
+      </section>
+
+      <!-- How It Works Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+            How E-Invoicing Works
+                </h2>
+          <p class="max-w-2xl mx-auto text-lg text-gray-600">
+            Our platform simplifies the e-invoicing process with three easy steps, saving you time and ensuring compliance.
+          </p>
+                </div>
+
+        <div class="relative">
+          <!-- Process Steps Timeline -->
+          <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-100"></div>
+
+          <!-- Step 1 -->
+          <div class="relative mb-16 md:mb-0" data-aos="fade-right" data-aos-delay="100">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-12 md:text-right">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <div class="flex items-center justify-end mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 mr-4">Create</h3>
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </div>
+            </div>
+                  <p class="text-gray-600">
+                    Create e-invoices by uploading CSV/Excel files, filling out a form, or extracting data from PDFs. Our system converts your data into standardized UBL XML format.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:flex md:w-12 md:justify-center relative">
+                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+                  1
+                </div>
+              </div>
+              <div class="md:w-1/2 mt-8 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Create invoices" class="rounded-lg shadow-lg" />
+          </div>
+        </div>
+      </div>
+
+          <!-- Step 2 -->
+          <div class="relative mb-16 md:mb-0 pt-16" data-aos="fade-left" data-aos-delay="200">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:order-last md:pl-12">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <div class="flex items-center mb-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+        </div>
+                    <h3 class="text-xl font-bold text-gray-900">Validate</h3>
+                  </div>
+                  <p class="text-gray-600">
+                    Ensure your invoices comply with Australian e-invoicing standards. Our validation system checks for wellformedness, syntax rules, and PEPPOL compliance.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:flex md:w-12 md:justify-center relative">
+                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+                  2
+                </div>
+              </div>
+              <div class="md:w-1/2 md:order-first mt-8 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Validate invoices" class="rounded-lg shadow-lg" />
+              </div>
+            </div>
+            </div>
+
+          <!-- Step 3 -->
+          <div class="relative pt-16" data-aos="fade-right" data-aos-delay="300">
+            <div class="flex flex-col md:flex-row items-center">
+              <div class="md:w-1/2 md:pr-12 md:text-right">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                  <div class="flex items-center justify-end mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 mr-4">Send</h3>
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-500 text-white">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                  </div>
+                </div>
+                  <p class="text-gray-600">
+                    Transmit your e-invoices securely via email or SFTP. Track delivery status and maintain a complete history of all sent invoices for easy reference.
+                  </p>
+                </div>
+              </div>
+              <div class="hidden md:flex md:w-12 md:justify-center relative">
+                <div class="h-12 w-12 rounded-full bg-indigo-500 border-4 border-white flex items-center justify-center text-white font-bold">
+                  3
+                </div>
+              </div>
+              <div class="md:w-1/2 mt-8 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Send invoices" class="rounded-lg shadow-lg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+            What Our Users Say
+          </h2>
+          <p class="max-w-2xl mx-auto text-lg text-gray-600">
+            Businesses across Australia trust our platform for their e-invoicing needs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-6">
+              <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-600 font-bold text-xl">JD</span>
+              </div>
+                <div>
+                <h4 class="font-bold text-gray-900">Jane Doe</h4>
+                <p class="text-gray-600 text-sm">Small Business Owner</p>
+                  </div>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "This platform has transformed our invoicing process. We've reduced our invoice processing time by 75% and eliminated manual errors. The interface is intuitive and the validation feature ensures we're always compliant."
+            </p>
+            <div class="flex text-yellow-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+                  </div>
+                </div>
+
+          <!-- Testimonial 2 -->
+          <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-6">
+              <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-600 font-bold text-xl">MS</span>
+              </div>
+                <div>
+                <h4 class="font-bold text-gray-900">Michael Smith</h4>
+                <p class="text-gray-600 text-sm">Accountant</p>
+                  </div>
+            </div>
+            <p class="text-gray-600 mb-6">
+              "As an accountant managing multiple clients, this platform has been a game-changer. The validation feature ensures all invoices meet Australian standards, and the dashboard makes it easy to track everything in one place."
+            </p>
+            <div class="flex text-yellow-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+                  </div>
+                </div>
+
+          <!-- Testimonial 3 -->
+          <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex items-center mb-6">
+              <div class="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-600 font-bold text-xl">SJ</span>
+              </div>
+                <div>
+                <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
+                <p class="text-gray-600 text-sm">IT Administrator</p>
+                  </div>
+                </div>
+            <p class="text-gray-600 mb-6">
+              "Implementation was seamless and the support team was incredibly helpful. The platform integrates well with our existing systems and the API documentation is comprehensive. Highly recommended for any SME."
+            </p>
+            <div class="flex text-yellow-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-50 to-white">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+            Benefits of E-Invoicing
+          </h2>
+          <p class="max-w-2xl mx-auto text-lg text-gray-600">
+            Discover how our platform can transform your invoicing process and help your business thrive.
+          </p>
+                  </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Benefit 1 -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="100">
+            <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Cost Savings</h3>
+            <p class="text-gray-600">
+              Reduce processing costs by up to 80% compared to paper invoices. Eliminate printing, postage, and manual data entry expenses.
+            </p>
+                </div>
+
+          <!-- Benefit 2 -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+                </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Time Efficiency</h3>
+            <p class="text-gray-600">
+              Process invoices up to 10 times faster than manual methods. Automated validation and sending save hours of administrative work.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="300">
+            <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Compliance</h3>
+            <p class="text-gray-600">
+              Stay compliant with Australian e-invoicing regulations. Our validation system ensures your invoices meet all required standards.
+              </p>
+            </div>
+
+          <!-- Benefit 4 -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up" data-aos-delay="400">
+            <div class="h-12 w-12 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+          </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Faster Payments</h3>
+            <p class="text-gray-600">
+              Get paid up to 3 times faster with e-invoices. Electronic delivery and processing lead to quicker approvals and payments.
+            </p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <!-- Gradient background with modern design elements -->
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-600 to-indigo-800">
+        <!-- Subtle wave pattern -->
+        <svg class="absolute inset-0 h-full w-full opacity-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,208C1248,192,1344,192,1392,192L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+      </div>
+      
+      <!-- Elegant geometric elements -->
+      <div class="absolute top-0 right-0 w-1/3 h-full opacity-20">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="w-full h-full">
+          <circle cx="300" cy="100" r="100" fill="#ffffff" fill-opacity="0.3" />
+          <circle cx="200" cy="250" r="150" fill="#ffffff" fill-opacity="0.2" />
+        </svg>
+      </div>
+      
+      <!-- Subtle diagonal lines -->
+      <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(135deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent); background-size: 100px 100px;"></div>
+      
+      <!-- Soft glow effects -->
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-400 opacity-20 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-300 opacity-20 rounded-full blur-[80px]"></div>
+      
+      <!-- Content -->
+      <div class="relative max-w-5xl mx-auto text-center" data-aos="fade-up">
+        <span class="inline-block px-4 py-1 mb-6 text-sm font-medium text-indigo-100 bg-indigo-800 bg-opacity-50 rounded-full backdrop-blur-sm">
+          Take the Next Step
+        </span>
+        <h2 class="text-3xl font-bold text-white sm:text-4xl mb-6 drop-shadow-sm">
+          Ready to Streamline Your Invoicing Process?
+        </h2>
+        <p class="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Join thousands of SMEs who have transformed their invoicing workflow with our platform. Get started today with a free account.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#" class="group inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Get Started Free
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#" class="group inline-flex items-center justify-center px-8 py-3 border border-white border-opacity-30 text-base font-medium rounded-md text-white bg-indigo-800 bg-opacity-50 hover:bg-opacity-70 backdrop-blur-sm transition-all duration-300 shadow-lg hover:shadow-xl">
+            Schedule a Demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+          <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+            Frequently Asked Questions
+              </h2>
+          <p class="max-w-2xl mx-auto text-lg text-gray-600">
+            Find answers to common questions about our e-invoicing platform.
+          </p>
+            </div>
+
+        <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
+          <!-- FAQ Item 1 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-900">What is e-invoicing?</h3>
+                <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </button>
+            <div class="px-6 pb-4">
+              <p class="text-gray-600">
+                E-invoicing is the exchange of invoice documents between a supplier and a buyer in an integrated electronic format. Unlike PDFs or scanned documents, e-invoices are structured digital documents that can be processed automatically by accounting systems.
+              </p>
+                  </div>
+                </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-900">Is this platform compliant with Australian e-invoicing standards?</h3>
+                <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                    </div>
+            </button>
+            <div class="px-6 pb-4">
+              <p class="text-gray-600">
+                Yes, our platform is fully compliant with Australian e-invoicing standards, including the PEPPOL BIS Billing 3.0 specification and UBL 2.1 XML format. All invoices created and validated through our platform meet these requirements.
+              </p>
+                  </div>
+                </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-900">How secure is the platform?</h3>
+                <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
+                  </button>
+            <div class="px-6 pb-4">
+              <p class="text-gray-600">
+                Security is our top priority. We use industry-standard encryption for all data transmission and storage. Our platform is hosted on secure servers with regular security audits and compliance with data protection regulations.
+              </p>
+                </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <button class="w-full px-6 py-4 text-left focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-lg font-medium text-gray-900">Can I integrate this with my existing accounting software?</h3>
+                <svg class="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </button>
+            <div class="px-6 pb-4">
+              <p class="text-gray-600">
+                Yes, our platform offers API integration with popular accounting software including Xero, MYOB, and QuickBooks. We also support CSV/Excel export and import to facilitate data exchange with other systems.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div class="col-span-1 md:col-span-1">
+            <div class="flex items-center mb-4">
+              <div class="h-10 w-10 rounded-md bg-indigo-500 flex items-center justify-center mr-3">
+                <span class="font-bold text-white text-xl">EI</span>
+        </div>
+              <span class="text-xl font-bold">E-Invoice</span>
+            </div>
+            <p class="text-gray-400 mb-4">
+              Streamlining e-invoicing for SMEs across Australia with our innovative platform.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+            </div>
+
+          <!-- Quick Links -->
+                <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Features</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Pricing</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Contact</a></li>
+            </ul>
+                  </div>
+
+          <!-- Resources -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Documentation</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">API Reference</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Support Center</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">FAQs</a></li>
+            </ul>
+                </div>
+
+          <!-- Newsletter -->
+                <div>
+            <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+            <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and features.</p>
+            <form class="flex flex-col sm:flex-row gap-2">
+              <input type="email" placeholder="Your email" class="px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+              <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-500 transition-colors duration-300">
+                Subscribe
+                  </button>
+              </form>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-12 pt-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">
+              &copy; 2023 E-Invoice Platform. All rights reserved.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Privacy Policy</a>
+              <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Terms of Service</a>
+              <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors duration-300">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </div>
+
+  <!-- Additional Design Notes - Outside the frame -->
+  <div class="design-notes">
+    <h3>Implementation Notes</h3>
+    <p>Implement responsive behavior for all screen sizes. Ensure animations are performant and accessible. Use the exact color values and typography as specified in this design.</p>
+  </div>
+
+    <script>
+    // Initialize AOS animations
+        AOS.init({
+          duration: 800,
+      easing: 'ease-in-out',
+      once: true
+        });
+
+        // GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+    // Animate hero elements
+    gsap.from('.hero-title', {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.hero-description', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.hero-cta', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      delay: 0.6,
+      ease: 'power3.out'
+    });
+    
+    // Animate dashboard image
+    gsap.from('.hero-image', {
+      opacity: 0,
+      x: 50,
+      duration: 1.2,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+    
+    // Animate decorative elements
+    gsap.from('.decorative-circle', {
+      opacity: 0,
+      scale: 0.5,
+      duration: 1,
+      delay: 0.8,
+      stagger: 0.2,
+      ease: 'back.out(1.7)'
+    });
+
+    // ... existing code ...
+    
+    // Animate decorative elements
+    gsap.from('.decorative-circle', {
+      opacity: 0,
+      scale: 0.5,
+      duration: 1,
+      delay: 0.8,
+      stagger: 0.2,
+      ease: 'back.out(1.7)'
+    });
+    
+    // Animate features on scroll
+    gsap.utils.toArray('.feature-card').forEach(card => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+          });
+        });
+    
+    // Animate FAQ accordions
+    const faqButtons = document.querySelectorAll('footer button');
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+        
+        // Toggle the icon
+        const icon = button.querySelector('svg');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+    
+    // Sticky header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.remove('bg-transparent');
+      } else {
+        header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.add('bg-transparent');
+      }
+      });
+    </script>
+  </body>
+</html>
