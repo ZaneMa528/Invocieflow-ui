@@ -3338,8 +3338,714 @@
 </div>
 </div>
 
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>Validation Results Page</div>
+</div>
 
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /invoices/{id}/validation-results
+</div>
 
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page displays the results of automatic validation performed after invoice creation. Key features include:</p>
+  <ul>
+    <li>Clear validation status summary with visual indicators for each validation component</li>
+    <li>Detailed error list with explanations and line references</li>
+    <li>Suggested fixes for each error to help users correct issues</li>
+    <li>Full JSON report preview with download option</li>
+    <li>Action buttons to navigate back to the invoice or fix and revalidate</li>
+  </ul>
+  <p>The page is designed to provide comprehensive validation feedback while maintaining a clean, user-friendly interface. The tabbed error section allows users to filter errors by category for easier troubleshooting.</p>
+</div>
+
+<div class="figma-frame">
+  <!-- Validation Results Page Container -->
+<div class="min-h-screen bg-secondary-50">
+  <!-- Top Navigation (保持不變) -->
+  
+  <!-- Page Content -->
+  <div class="py-10">
+    <header>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold leading-tight text-secondary-900">Invoice Validation Results</h1>
+      </div>
+    </header>
+    <main>
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <!-- Validation Status Summary -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+          <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-lg leading-6 font-medium text-secondary-900">Validation Status</h2>
+              <p class="mt-1 max-w-2xl text-sm text-secondary-500">Results of validating your invoice against Australian e-invoicing standards</p>
+            </div>
+            <!-- Status Badge -->
+            <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-red-100 text-red-800">
+              Failed Validation
+            </span>
+            <!-- Alternative success badge -->
+            <!-- <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+              Passed Validation
+            </span> -->
+          </div>
+          <div class="border-t border-secondary-200">
+            <dl>
+              <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-secondary-500">Invoice ID</dt>
+                <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">INV-2023-07-001</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-secondary-500">Customer</dt>
+                <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">Acme Corporation</dd>
+              </div>
+              <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-secondary-500">Validation Date</dt>
+                <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">July 15, 2023 14:30:45</dd>
+              </div>
+              <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-secondary-500">Validation Summary</dt>
+                <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">
+                  <div class="flex flex-col sm:flex-row sm:space-x-6">
+                    <div class="flex items-center mb-2 sm:mb-0">
+                      <div class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center mr-2">
+                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>Wellformedness: <strong class="text-red-600">Failed</strong></span>
+                    </div>
+                    <div class="flex items-center mb-2 sm:mb-0">
+                      <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                        <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>Syntax Rules: <strong class="text-green-600">Passed</strong></span>
+                    </div>
+                    <div class="flex items-center mb-2 sm:mb-0">
+                      <div class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center mr-2">
+                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>PEPPOL Rules: <strong class="text-red-600">Failed</strong></span>
+                    </div>
+                    <div class="flex items-center">
+                      <div class="h-8 w-8 rounded-full bg-red-100 flex items-center justify-center mr-2">
+                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <span>Schema: <strong class="text-red-600">Failed</strong></span>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <!-- Validation Errors -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+          <div class="px-4 py-5 sm:px-6">
+            <h2 class="text-lg leading-6 font-medium text-secondary-900">Validation Errors</h2>
+            <p class="mt-1 max-w-2xl text-sm text-secondary-500">The following errors were found during validation</p>
+          </div>
+          <div class="border-t border-secondary-200">
+            <!-- Error Tabs -->
+            <div class="border-b border-secondary-200">
+              <nav class="-mb-px flex" aria-label="Tabs">
+                <a href="#" class="border-primary-500 text-primary-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ml-8">
+                  All Errors (5)
+                </a>
+                <a href="#" class="border-transparent text-secondary-500 hover:text-secondary-700 hover:border-secondary-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ml-8">
+                  Wellformedness (1)
+                </a>
+                <a href="#" class="border-transparent text-secondary-500 hover:text-secondary-700 hover:border-secondary-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ml-8">
+                  PEPPOL Rules (2)
+                </a>
+                <a href="#" class="border-transparent text-secondary-500 hover:text-secondary-700 hover:border-secondary-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm ml-8">
+                  Schema (2)
+                </a>
+              </nav>
+            </div>
+            
+            <!-- Error List -->
+            <ul class="divide-y divide-secondary-200">
+              <!-- Error Item 1 -->
+              <li>
+                <div class="px-4 py-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-sm font-medium text-secondary-900">
+                        <span class="font-semibold">[PEPPOL-COMMON-R040]</span>: GLN must have a valid format according to GS1 rules
+                      </p>
+                    </div>
+                    <div class="ml-2 flex-shrink-0 flex">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        Error
+                      </span>
+                    </div>
+                  </div>
+                  <div class="mt-2 sm:flex sm:justify-between">
+                    <div class="sm:flex">
+                      <p class="flex items-center text-sm text-secondary-500">
+                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                        The GLN (Global Location Number) format is invalid. It must be a 13-digit number that follows GS1 standards.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2 text-sm text-secondary-700">
+                    <div class="bg-secondary-50 p-3 rounded-md">
+                      <p class="font-mono text-xs">
+                        <span class="text-red-600">Error at line 45:</span> &lt;cac:PartyLegalEntity&gt;&lt;cbc:CompanyID schemeID="0151"&gt;123456789&lt;/cbc:CompanyID&gt;&lt;/cac:PartyLegalEntity&gt;
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <h4 class="text-sm font-medium text-secondary-900">Suggested Fix:</h4>
+                    <p class="text-sm text-secondary-500">Ensure the GLN is exactly 13 digits and follows the GS1 check digit algorithm. Example: 5790000000012</p>
+                  </div>
+                </div>
+              </li>
+              
+              <!-- Error Item 2 -->
+              <li>
+                <div class="px-4 py-4 sm:px-6">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                        <svg class="h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-sm font-medium text-secondary-900">
+                        <span class="font-semibold">[BR-AU-05]</span>: Australian invoices MUST contain the Buyer's ABN number
+                      </p>
+                    </div>
+                    <div class="ml-2 flex-shrink-0 flex">
+                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        Error
+                      </span>
+                    </div>
+                  </div>
+                  <div class="mt-2 sm:flex sm:justify-between">
+                    <div class="sm:flex">
+                      <p class="flex items-center text-sm text-secondary-500">
+                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                        The ABN (Australian Business Number) for the buyer is missing. This is required for all Australian invoices.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-2">
+                    <h4 class="text-sm font-medium text-secondary-900">Suggested Fix:</h4>
+                    <p class="text-sm text-secondary-500">Add the buyer's ABN in the format: &lt;cac:AccountingCustomerParty&gt;&lt;cac:Party&gt;&lt;cac:PartyLegalEntity&gt;&lt;cbc:CompanyID schemeID="0151"&gt;[ABN NUMBER]&lt;/cbc:CompanyID&gt;&lt;/cac:PartyLegalEntity&gt;</p>
+                  </div>
+                </div>
+              </li>
+              
+              <!-- More error items would go here -->
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Report Preview -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+          <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+              <h2 class="text-lg leading-6 font-medium text-secondary-900">Validation Report</h2>
+              <p class="mt-1 max-w-2xl text-sm text-secondary-500">Full validation report in JSON format</p>
+            </div>
+            <div>
+              <div class="flex space-x-3">
+                <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  Download JSON
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-secondary-200 px-4 py-5 sm:px-6">
+            <div class="bg-secondary-800 rounded-md p-4 overflow-auto max-h-96">
+              <pre class="text-xs text-secondary-100 font-mono">
+{
+  "validationResult": {
+    "status": "FAILED",
+    "timestamp": "2023-07-15T14:30:45Z",
+    "invoiceId": "INV-2023-07-001",
+    "components": [
+      {
+        "name": "Wellformedness",
+        "status": "FAILED",
+        "errors": [
+          {
+            "code": "XML-001",
+            "message": "XML document is not well-formed",
+            "location": "Line 23, Column 15",
+            "details": "Unclosed tag: cac:AccountingSupplierParty"
+          }
+        ]
+      },
+      {
+        "name": "Syntax Rules",
+        "status": "PASSED",
+        "errors": []
+      },
+      {
+        "name": "PEPPOL Rules",
+        "status": "FAILED",
+        "errors": [
+          {
+            "code": "PEPPOL-COMMON-R040",
+            "message": "GLN must have a valid format according to GS1 rules",
+            "location": "Line 45",
+            "details": "The GLN (Global Location Number) format is invalid. It must be a 13-digit number that follows GS1 standards."
+          },
+          {
+            "code": "BR-AU-05",
+            "message": "Australian invoices MUST contain the Buyer's ABN number",
+            "location": "cac:AccountingCustomerParty/cac:Party",
+            "details": "The ABN (Australian Business Number) for the buyer is missing. This is required for all Australian invoices."
+          }
+        ]
+      },
+      {
+        "name": "Schema",
+        "status": "FAILED",
+        "errors": [
+          {
+            "code": "XSD-001",
+            "message": "Element 'cbc:sydney': This element is not expected.",
+            "location": "Line 67",
+            "details": "The tag 'cbc:sydney' is not a valid UBL tag."
+          },
+          {
+            "code": "XSD-002",
+            "message": "Element 'cbc:TaxAmount': '1000.00X' is not a valid value of the atomic type 'xs:decimal'.",
+            "location": "Line 89",
+            "details": "The tax amount contains an invalid character 'X'. It must be a valid decimal number."
+          }
+        ]
+      }
+    ]
+  }
+}
+              </pre>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="mt-8 flex justify-end space-x-3">
+          <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            Back to Invoice
+          </button>
+          <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+            Fix and Revalidate
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+</div>
+
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>Validation Results Page - Success</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /invoices/{id}/validation-results/success
+</div>
+
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page displays successful validation results after invoice creation. Key features include:</p>
+  <ul>
+    <li>Clear success status with visual indicators for each validation component</li>
+    <li>UBL XML invoice preview with syntax highlighting</li>
+    <li>Options to download the validated invoice in different formats</li>
+    <li>Direct email sending functionality with recipient input</li>
+    <li>Alternative option to send later from the dashboard</li>
+  </ul>
+  <p>The page is designed to provide a clear confirmation of successful validation while offering immediate next steps for the user. The prominent email sending section encourages users to complete the e-invoicing workflow in one session.</p>
+</div>
+
+<div class="figma-frame">
+  <!-- Validation Results Page Container - Success Version -->
+  <div class="min-h-screen bg-secondary-50">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Create Invoice
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <button class="bg-white p-1 rounded-full text-secondary-400 hover:text-secondary-500 focus:outline-none">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="py-10">
+      <header>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold leading-tight text-secondary-900">Invoice Validation Results</h1>
+        </div>
+      </header>
+      <main>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <!-- Validation Status Summary -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+              <div>
+                <h2 class="text-lg leading-6 font-medium text-secondary-900">Validation Status</h2>
+                <p class="mt-1 max-w-2xl text-sm text-secondary-500">Results of validating your invoice against Australian e-invoicing standards</p>
+              </div>
+              <!-- Success Badge -->
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                Validation Successful
+              </span>
+            </div>
+            <div class="border-t border-secondary-200">
+              <dl>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Invoice ID</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">INV-2023-07-001</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Customer</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">Acme Corporation</dd>
+                </div>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Validation Date</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">July 15, 2023 14:30:45</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Validation Summary</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">
+                    <div class="flex flex-col sm:flex-row sm:space-x-6">
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                          <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                        <span>Wellformedness: <strong class="text-green-600">Passed</strong></span>
+                      </div>
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                          <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                        <span>Syntax Rules: <strong class="text-green-600">Passed</strong></span>
+                      </div>
+                      <div class="flex items-center mb-2 sm:mb-0">
+                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                          <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                        <span>PEPPOL Rules: <strong class="text-green-600">Passed</strong></span>
+                      </div>
+                      <div class="flex items-center">
+                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center mr-2">
+                          <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                        </div>
+                        <span>Schema: <strong class="text-green-600">Passed</strong></span>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- E-Invoice Preview -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+              <div>
+                <h2 class="text-lg leading-6 font-medium text-secondary-900">UBL XML E-Invoice</h2>
+                <p class="mt-1 max-w-2xl text-sm text-secondary-500">Your validated e-invoice in UBL XML format</p>
+              </div>
+              <div>
+                <div class="flex space-x-3">
+                  <button type="button" class="inline-flex items-center px-3 py-1.5 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <svg class="-ml-1 mr-2 h-4 w-4 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Download XML
+                  </button>
+                  <button type="button" class="inline-flex items-center px-3 py-1.5 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <svg class="-ml-1 mr-2 h-4 w-4 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Download PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-secondary-200 px-4 py-5 sm:px-6">
+              <div class="bg-secondary-800 rounded-md p-4 overflow-auto max-h-96">
+                <pre class="text-xs text-secondary-100 font-mono">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"&gt;
+  &lt;cbc:CustomizationID&gt;urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0&lt;/cbc:CustomizationID&gt;
+  &lt;cbc:ProfileID&gt;urn:fdc:peppol.eu:2017:poacc:billing:01:1.0&lt;/cbc:ProfileID&gt;
+  &lt;cbc:ID&gt;INV-2023-07-001&lt;/cbc:ID&gt;
+  &lt;cbc:IssueDate&gt;2023-07-15&lt;/cbc:IssueDate&gt;
+  &lt;cbc:DueDate&gt;2023-08-14&lt;/cbc:DueDate&gt;
+  &lt;cbc:InvoiceTypeCode&gt;380&lt;/cbc:InvoiceTypeCode&gt;
+  &lt;cbc:DocumentCurrencyCode&gt;AUD&lt;/cbc:DocumentCurrencyCode&gt;
+  &lt;cbc:AccountingCost&gt;4025:123:4343&lt;/cbc:AccountingCost&gt;
+  &lt;cbc:BuyerReference&gt;0150abc&lt;/cbc:BuyerReference&gt;
+  
+  &lt;cac:AccountingSupplierParty&gt;
+    &lt;cac:Party&gt;
+      &lt;cac:PartyIdentification&gt;
+        &lt;cbc:ID schemeID="0151"&gt;47555222000&lt;/cbc:ID&gt;
+      &lt;/cac:PartyIdentification&gt;
+      &lt;cac:PartyName&gt;
+        &lt;cbc:Name&gt;Supplier Trading Name Ltd&lt;/cbc:Name&gt;
+      &lt;/cac:PartyName&gt;
+      &lt;cac:PostalAddress&gt;
+        &lt;cbc:StreetName&gt;Main street 1&lt;/cbc:StreetName&gt;
+        &lt;cbc:AdditionalStreetName&gt;Postbox 123&lt;/cbc:AdditionalStreetName&gt;
+        &lt;cbc:CityName&gt;Sydney&lt;/cbc:CityName&gt;
+        &lt;cbc:PostalZone&gt;2000&lt;/cbc:PostalZone&gt;
+        &lt;cbc:CountrySubentity&gt;NSW&lt;/cbc:CountrySubentity&gt;
+        &lt;cac:Country&gt;
+          &lt;cbc:IdentificationCode&gt;AU&lt;/cbc:IdentificationCode&gt;
+        &lt;/cac:Country&gt;
+      &lt;/cac:PostalAddress&gt;
+      &lt;cac:PartyTaxScheme&gt;
+        &lt;cbc:CompanyID&gt;47555222000&lt;/cbc:CompanyID&gt;
+        &lt;cac:TaxScheme&gt;
+          &lt;cbc:ID&gt;GST&lt;/cbc:ID&gt;
+        &lt;/cac:TaxScheme&gt;
+      &lt;/cac:PartyTaxScheme&gt;
+      &lt;cac:PartyLegalEntity&gt;
+        &lt;cbc:RegistrationName&gt;Supplier Official Name Ltd&lt;/cbc:RegistrationName&gt;
+        &lt;cbc:CompanyID schemeID="0151"&gt;47555222000&lt;/cbc:CompanyID&gt;
+      &lt;/cac:PartyLegalEntity&gt;
+      &lt;cac:Contact&gt;
+        &lt;cbc:Name&gt;John Doe&lt;/cbc:Name&gt;
+        &lt;cbc:Telephone&gt;+61 2 9876 5432&lt;/cbc:Telephone&gt;
+        &lt;cbc:ElectronicMail&gt;john.doe@supplier.com.au&lt;/cbc:ElectronicMail&gt;
+      &lt;/cac:Contact&gt;
+    &lt;/cac:Party&gt;
+  &lt;/cac:AccountingSupplierParty&gt;
+  
+  &lt;cac:AccountingCustomerParty&gt;
+    &lt;cac:Party&gt;
+      &lt;cac:PartyIdentification&gt;
+        &lt;cbc:ID schemeID="0151"&gt;91888222000&lt;/cbc:ID&gt;
+      &lt;/cac:PartyIdentification&gt;
+      &lt;cac:PartyName&gt;
+        &lt;cbc:Name&gt;Acme Corporation&lt;/cbc:Name&gt;
+      &lt;/cac:PartyName&gt;
+      &lt;cac:PostalAddress&gt;
+        &lt;cbc:StreetName&gt;Buyer street 456&lt;/cbc:StreetName&gt;
+        &lt;cbc:AdditionalStreetName&gt;Building 1&lt;/cbc:AdditionalStreetName&gt;
+        &lt;cbc:CityName&gt;Melbourne&lt;/cbc:CityName&gt;
+        &lt;cbc:PostalZone&gt;3000&lt;/cbc:PostalZone&gt;
+        &lt;cbc:CountrySubentity&gt;VIC&lt;/cbc:CountrySubentity&gt;
+        &lt;cac:Country&gt;
+          &lt;cbc:IdentificationCode&gt;AU&lt;/cbc:IdentificationCode&gt;
+        &lt;/cac:Country&gt;
+      &lt;/cac:PostalAddress&gt;
+      &lt;cac:PartyTaxScheme&gt;
+        &lt;cbc:CompanyID&gt;91888222000&lt;/cbc:CompanyID&gt;
+        &lt;cac:TaxScheme&gt;
+          &lt;cbc:ID&gt;GST&lt;/cbc:ID&gt;
+        &lt;/cac:TaxScheme&gt;
+      &lt;/cac:PartyTaxScheme&gt;
+      &lt;cac:PartyLegalEntity&gt;
+        &lt;cbc:RegistrationName&gt;Acme Corporation Pty Ltd&lt;/cbc:RegistrationName&gt;
+        &lt;cbc:CompanyID schemeID="0151"&gt;91888222000&lt;/cbc:CompanyID&gt;
+      &lt;/cac:PartyLegalEntity&gt;
+    &lt;/cac:Party&gt;
+  &lt;/cac:AccountingCustomerParty&gt;
+  
+  &lt;!-- More XML content... --&gt;
+&lt;/Invoice&gt;
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Send Invoice Section -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6">
+              <h2 class="text-lg leading-6 font-medium text-secondary-900">Send Invoice</h2>
+              <p class="mt-1 max-w-2xl text-sm text-secondary-500">Send your validated e-invoice to the customer</p>
+            </div>
+            <div class="border-t border-secondary-200 px-4 py-5 sm:p-6">
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                  <div class="sm:col-span-4">
+                    <label for="email" class="block text-sm font-medium text-secondary-700">
+                      Recipient Email
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="email" name="email" id="email" value="finance@acmecorp.com.au" class="flex-1 focus:ring-primary-500 focus:border-primary-500 block w-full min-w-0 rounded-md sm:text-sm border-secondary-300">
+                    </div>
+                    <p class="mt-2 text-sm text-secondary-500">The email address of the invoice recipient.</p>
+                  </div>
+                  
+                  <div class="sm:col-span-6">
+                    <label for="subject" class="block text-sm font-medium text-secondary-700">
+                      Email Subject
+                    </label>
+                    <div class="mt-1">
+                      <input type="text" name="subject" id="subject" value="Invoice INV-2023-07-001 from Your Company" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                    </div>
+                  </div>
+                  
+                  <div class="sm:col-span-6">
+                    <label for="message" class="block text-sm font-medium text-secondary-700">
+                      Email Message
+                    </label>
+                    <div class="mt-1">
+                      <textarea id="message" name="message" rows="4" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">Dear Customer,
+
+Please find attached your invoice INV-2023-07-001 for $1,650.00 AUD, due on August 14, 2023.
+
+Thank you for your business.
+
+Regards,
+Your Company</textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="sm:col-span-6">
+                    <div class="flex items-start">
+                      <div class="flex items-center h-5">
+                        <input id="attachPdf" name="attachPdf" type="checkbox" checked class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300 rounded">
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="attachPdf" class="font-medium text-secondary-700">Attach PDF version</label>
+                        <p class="text-secondary-500">Include a PDF version of the invoice as an attachment.</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="sm:col-span-6">
+                    <div class="flex items-start">
+                      <div class="flex items-center h-5">
+                        <input id="attachXml" name="attachXml" type="checkbox" checked class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300 rounded">
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="attachXml" class="font-medium text-secondary-700">Attach UBL XML version</label>
+                        <p class="text-secondary-500">Include the UBL XML version of the invoice as an attachment.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="flex justify-end space-x-3">
+                  <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Send Later
+                  </button>
+                  <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                    Send Invoice
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+          <!-- PEPPOL Sending Option -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+              <div>
+                <h2 class="text-lg leading-6 font-medium text-secondary-900">Send via PEPPOL Network</h2>
+                <p class="mt-1 max-w-2xl text-sm text-secondary-500">Send your invoice directly through the PEPPOL network</p>
+              </div>
+              <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                Send via PEPPOL
+              </button>
+            </div>
+            <div class="border-t border-secondary-200 px-4 py-5 sm:px-6">
+              <p class="text-sm text-secondary-500">
+                The PEPPOL network allows secure electronic document exchange between businesses. Your invoice has been validated and is ready to be sent through the PEPPOL network to the recipient.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="mt-8 flex justify-end space-x-3">
+            <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              Back to Dashboard
+            </button>
+            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              Create Another Invoice
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
 
     <script>
     // Initialize AOS animations
