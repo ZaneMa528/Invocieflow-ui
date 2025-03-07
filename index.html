@@ -2415,370 +2415,809 @@
     <h3>Design Notes</h3>
     <p>This is a simplified design for the manual invoice creation page. It contains only the essential fields needed to create a valid e-invoice while meeting the requirements in the user story. The form is consolidated into a single page with clearly organized sections for better usability and faster development.</p>
   </div>
-  <div class="figma-frame">
-
-<!-- Manual Invoice Form Page Container -->
-<div class="min-h-screen bg-secondary-50">
-  <!-- Top Navigation -->
-  <nav class="bg-white shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex">
-          <!-- Logo -->
-          <div class="flex-shrink-0 flex items-center">
-            <div class="w-8 h-8 relative">
-              <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
-            </div>
-            <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
-          </div>
-          <!-- Navigation Links -->
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Dashboard
-            </a>
-            <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Create Invoice
-            </a>
-          </div>
-        </div>
-        <!-- User Menu -->
-        <div class="flex items-center">
-          <button class="bg-white p-1 rounded-full text-secondary-400 hover:text-secondary-500 focus:outline-none">
-            <span class="sr-only">View notifications</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
-          <div class="ml-3 relative">
-            <div>
-              <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
-                <span class="sr-only">Open user menu</span>
-                <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
-                  <span>JD</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="py-10">
-    <header>
+  
+<div class="figma-frame">
+  <!-- Manual Invoice Form Page Container -->
+  <div class="min-h-screen bg-secondary-50">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold leading-tight text-secondary-900">Create Invoice</h1>
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Create Invoice
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <button class="bg-white p-1 rounded-full text-secondary-400 hover:text-secondary-500 focus:outline-none">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
-    <main>
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
-          <div class="px-4 py-5 sm:p-6">
-            <form>
-              <!-- Form Sections -->
-              <div class="space-y-8">
+    </nav>
+
+    <!-- Page Content -->
+    <div class="py-10">
+      <header>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold leading-tight text-secondary-900">Create Invoice</h1>
+        </div>
+      </header>
+      <main>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:p-6">
+              <form>
+                <!-- Form Sections -->
+                <div class="space-y-8">
+                  
+                  <!-- 1. Basic Invoice Information -->
+                  <div>
+                    <h3 class="text-lg leading-6 font-medium text-secondary-900">Basic Invoice Information</h3>
+                    <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                      <!-- Customer Selection (Required) -->
+                      <div class="sm:col-span-3">
+                        <label for="customer" class="block text-sm font-medium text-secondary-700">
+                          Customer <span class="text-red-500">*</span>
+                        </label>
+                        <div class="mt-1">
+                          <select id="customer" name="customer" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            <option value="">Select a customer</option>
+                            <option value="customer1">ABC Company</option>
+                            <option value="customer2">XYZ Corporation</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Invoice Date (Required) -->
+                      <div class="sm:col-span-3">
+                        <label for="invoiceDate" class="block text-sm font-medium text-secondary-700">
+                          Invoice Date <span class="text-red-500">*</span>
+                        </label>
+                        <div class="mt-1">
+                          <input type="date" name="invoiceDate" id="invoiceDate" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Due Date -->
+                      <div class="sm:col-span-3">
+                        <label for="dueDate" class="block text-sm font-medium text-secondary-700">
+                          Due Date
+                        </label>
+                        <div class="mt-1">
+                          <input type="date" name="dueDate" id="dueDate" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Reference Number -->
+                      <div class="sm:col-span-3">
+                        <label for="reference" class="block text-sm font-medium text-secondary-700">
+                          Reference Number
+                        </label>
+                        <div class="mt-1">
+                          <input type="text" name="reference" id="reference" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Purchase Order Number -->
+                      <div class="sm:col-span-3">
+                        <label for="purchaseOrderNumber" class="block text-sm font-medium text-secondary-700">
+                          Purchase Order Number
+                        </label>
+                        <div class="mt-1">
+                          <input type="text" name="purchaseOrderNumber" id="purchaseOrderNumber" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Tax Status (Required) -->
+                      <div class="sm:col-span-3">
+                        <label for="amountTaxStatus" class="block text-sm font-medium text-secondary-700">
+                          Tax Status <span class="text-red-500">*</span>
+                        </label>
+                        <div class="mt-1">
+                          <select id="amountTaxStatus" name="amountTaxStatus" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            <option value="Inclusive">Tax Inclusive</option>
+                            <option value="Exclusive">Tax Exclusive</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Discount Information -->
+                  <div>
+                    <h3 class="text-lg leading-6 font-medium text-secondary-900">Discount Information</h3>
+                    <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                      <!-- Invoice Discount Amount -->
+                      <div class="sm:col-span-3">
+                        <label for="invoiceDiscountAmount" class="block text-sm font-medium text-secondary-700">
+                          Discount Amount
+                        </label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-secondary-500 sm:text-sm">$</span>
+                          </div>
+                          <input type="number" name="invoiceDiscountAmount" id="invoiceDiscountAmount" step="0.01" min="0" class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-7 sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Invoice Discount Percent -->
+                      <div class="sm:col-span-3">
+                        <label for="invoiceDiscountPercent" class="block text-sm font-medium text-secondary-700">
+                          Discount Percentage
+                        </label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                          <input type="number" name="invoiceDiscountPercent" id="invoiceDiscountPercent" step="0.01" min="0" max="100" class="focus:ring-primary-500 focus:border-primary-500 block w-full pr-12 sm:text-sm border-secondary-300 rounded-md">
+                          <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                            <span class="text-secondary-500 sm:text-sm">%</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3. Payment Terms -->
+                  <div>
+                    <h3 class="text-lg leading-6 font-medium text-secondary-900">Payment Terms</h3>
+                    <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                      <!-- Payment Terms -->
+                      <div class="sm:col-span-3">
+                        <label for="paymentTerms" class="block text-sm font-medium text-secondary-700">
+                          Payment Terms
+                        </label>
+                        <div class="mt-1">
+                          <input type="text" name="paymentTerms" id="paymentTerms" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Payment Details -->
+                      <div class="sm:col-span-3">
+                        <label for="paymentDetails" class="block text-sm font-medium text-secondary-700">
+                          Payment Details
+                        </label>
+                        <div class="mt-1">
+                          <input type="text" name="paymentDetails" id="paymentDetails" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Include in Invoice Reminders -->
+                      <div class="sm:col-span-6">
+                        <div class="flex items-start">
+                          <div class="flex items-center h-5">
+                            <input id="includeInInvoiceReminders" name="includeInInvoiceReminders" type="checkbox" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300 rounded">
+                          </div>
+                          <div class="ml-3 text-sm">
+                            <label for="includeInInvoiceReminders" class="font-medium text-secondary-700">Include in invoice reminders</label>
+                            <p class="text-secondary-500">This invoice will be included in daily reminder checks.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 4. Line Items (Required) -->
+                  <div>
+                    <div class="flex justify-between">
+                      <h3 class="text-lg leading-6 font-medium text-secondary-900">Line Items <span class="text-red-500">*</span></h3>
+                      <button type="button" class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                        Add Line Item
+                      </button>
+                    </div>
+                    <div class="mt-6 overflow-x-auto">
+                      <table class="min-w-full divide-y divide-secondary-200">
+                        <thead class="bg-secondary-50">
+                          <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Line #
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Description
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Quantity
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Unit Price
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Tax Rate
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              Amount
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                              <span class="sr-only">Actions</span>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-secondary-200">
+                          <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              <input type="text" name="lineItems[0].description" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              <input type="number" name="lineItems[0].quantity" min="1" step="1" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              <input type="number" name="lineItems[0].unitPrice" min="0" step="0.01" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              <select name="lineItems[0].taxRate" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                                <option value="10">GST (10%)</option>
+                                <option value="0">No Tax (0%)</option>
+                              </select>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              $0.00
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                              <button type="button" class="text-red-600 hover:text-red-900">
+                                Remove
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
+                              Subtotal:
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
+                              $0.00
+                            </td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
+                              Tax:
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
+                              $0.00
+                            </td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
+                              Total:
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-secondary-900">
+                              $0.00
+                            </td>
+                            <td></td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- 5. Additional Information -->
+                  <div>
+                    <h3 class="text-lg leading-6 font-medium text-secondary-900">Additional Information</h3>
+                    <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                      <!-- Notes -->
+                      <div class="sm:col-span-6">
+                        <label for="notes" class="block text-sm font-medium text-secondary-700">
+                          Notes
+                        </label>
+                        <div class="mt-1">
+                          <textarea id="notes" name="notes" rows="3" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md"></textarea>
+                        </div>
+                      </div>
+
+                      <!-- Classification -->
+                      <div class="sm:col-span-3">
+                        <label for="classification" class="block text-sm font-medium text-secondary-700">
+                          Classification
+                        </label>
+                        <div class="mt-1">
+                          <input type="text" name="classification" id="classification" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                        </div>
+                      </div>
+
+                      <!-- Template -->
+                      <div class="sm:col-span-3">
+                        <label for="template" class="block text-sm font-medium text-secondary-700">
+                          Template
+                        </label>
+                        <div class="mt-1">
+                          <select id="template" name="template" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
+                            <option value="default">Default Template</option>
+                            <option value="professional">Professional</option>
+                            <option value="simple">Simple</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="pt-8 flex justify-end space-x-3">
+                  <button type="button" class="bg-white py-2 px-4 border border-secondary-300 rounded-md shadow-sm text-sm font-medium text-secondary-700 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Cancel
+                  </button>
+                  <button type="button" class="bg-white py-2 px-4 border border-secondary-300 rounded-md shadow-sm text-sm font-medium text-secondary-700 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Save as Draft
+                  </button>
+                  <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Create Invoice
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>CSV/Excel Upload Page</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /invoices/create/csv
+</div>
+
+<!-- Design Notes - Outside the frame -->
+
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page allows users to upload a CSV/Excel file and map columns to create invoices directly. Key design features:</p>
+  <ul>
+    <li>Simplified single-page workflow that combines file upload and column mapping</li>
+    <li>Clear file upload area with drag-and-drop support</li>
+    <li>Intuitive column mapping interface with required fields clearly marked</li>
+    <li>Sample data display to help users verify their mapping</li>
+    <li>Direct "Create Invoices" button that processes the file immediately</li>
+  </ul>
+  <p>This streamlined approach allows users to quickly create invoices from CSV/Excel files without multiple steps. After creation, users will be directed to the validation page where they can verify and fix any issues with the generated invoices.</p>
+</div>
+
+
+<div class="figma-frame">
+  <!-- CSV/Excel Upload Page Container -->
+  <div class="min-h-screen bg-secondary-50">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Create Invoice
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <button class="bg-white p-1 rounded-full text-secondary-400 hover:text-secondary-500 focus:outline-none">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="py-10">
+      <header>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 class="text-3xl font-bold leading-tight text-secondary-900">Import Invoice from CSV/Excel</h1>
+        </div>
+      </header>
+      <main>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <!-- Main Content -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="max-w-3xl mx-auto">
+                <!-- File Upload Section -->
+                <div class="mb-8">
+                  <h2 class="text-lg font-medium text-secondary-900 mb-5">Upload Your File</h2>
+                  <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-secondary-300 border-dashed rounded-md">
+                    <div class="space-y-1 text-center">
+                      <svg class="mx-auto h-12 w-12 text-secondary-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <div class="flex text-sm text-secondary-600">
+                        <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
+                          <span>Upload a file</span>
+                          <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".csv,.xlsx,.xls">
+                        </label>
+                        <p class="pl-1">or drag and drop</p>
+                      </div>
+                      <p class="text-xs text-secondary-500">
+                        CSV, Excel (.xlsx, .xls) up to 10MB
+                      </p>
+                    </div>
+                  </div>
+                </div>
                 
-                <!-- 1. Basic Invoice Information -->
-                <div>
-                  <h3 class="text-lg leading-6 font-medium text-secondary-900">Basic Invoice Information</h3>
-                  <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                    <!-- Customer Selection (Required) -->
-                    <div class="sm:col-span-3">
-                      <label for="customer" class="block text-sm font-medium text-secondary-700">
-                        Customer <span class="text-red-500">*</span>
-                      </label>
-                      <div class="mt-1">
-                        <select id="customer" name="customer" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          <option value="">Select a customer</option>
-                          <option value="customer1">ABC Company</option>
-                          <option value="customer2">XYZ Corporation</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- Invoice Date (Required) -->
-                    <div class="sm:col-span-3">
-                      <label for="invoiceDate" class="block text-sm font-medium text-secondary-700">
-                        Invoice Date <span class="text-red-500">*</span>
-                      </label>
-                      <div class="mt-1">
-                        <input type="date" name="invoiceDate" id="invoiceDate" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Due Date -->
-                    <div class="sm:col-span-3">
-                      <label for="dueDate" class="block text-sm font-medium text-secondary-700">
-                        Due Date
-                      </label>
-                      <div class="mt-1">
-                        <input type="date" name="dueDate" id="dueDate" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Reference Number -->
-                    <div class="sm:col-span-3">
-                      <label for="reference" class="block text-sm font-medium text-secondary-700">
-                        Reference Number
-                      </label>
-                      <div class="mt-1">
-                        <input type="text" name="reference" id="reference" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Purchase Order Number -->
-                    <div class="sm:col-span-3">
-                      <label for="purchaseOrderNumber" class="block text-sm font-medium text-secondary-700">
-                        Purchase Order Number
-                      </label>
-                      <div class="mt-1">
-                        <input type="text" name="purchaseOrderNumber" id="purchaseOrderNumber" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Tax Status (Required) -->
-                    <div class="sm:col-span-3">
-                      <label for="amountTaxStatus" class="block text-sm font-medium text-secondary-700">
-                        Tax Status <span class="text-red-500">*</span>
-                      </label>
-                      <div class="mt-1">
-                        <select id="amountTaxStatus" name="amountTaxStatus" required class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          <option value="Inclusive">Tax Inclusive</option>
-                          <option value="Exclusive">Tax Exclusive</option>
-                        </select>
-                      </div>
-                    </div>
+                <!-- File Information (shows after upload) -->
+                <div class="bg-secondary-50 rounded-lg p-4 mb-6 flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10 rounded-md bg-primary-100 flex items-center justify-center">
+                    <svg class="h-6 w-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
                   </div>
-                </div>
-
-                <!-- 2. Discount Information -->
-                <div>
-                  <h3 class="text-lg leading-6 font-medium text-secondary-900">Discount Information</h3>
-                  <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                    <!-- Invoice Discount Amount -->
-                    <div class="sm:col-span-3">
-                      <label for="invoiceDiscountAmount" class="block text-sm font-medium text-secondary-700">
-                        Discount Amount
-                      </label>
-                      <div class="mt-1 relative rounded-md shadow-sm">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <span class="text-secondary-500 sm:text-sm">$</span>
-                        </div>
-                        <input type="number" name="invoiceDiscountAmount" id="invoiceDiscountAmount" step="0.01" min="0" class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-7 sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Invoice Discount Percent -->
-                    <div class="sm:col-span-3">
-                      <label for="invoiceDiscountPercent" class="block text-sm font-medium text-secondary-700">
-                        Discount Percentage
-                      </label>
-                      <div class="mt-1 relative rounded-md shadow-sm">
-                        <input type="number" name="invoiceDiscountPercent" id="invoiceDiscountPercent" step="0.01" min="0" max="100" class="focus:ring-primary-500 focus:border-primary-500 block w-full pr-12 sm:text-sm border-secondary-300 rounded-md">
-                        <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                          <span class="text-secondary-500 sm:text-sm">%</span>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="ml-4">
+                    <h3 class="text-sm font-medium text-secondary-900">invoice_data_july_2023.xlsx</h3>
+                    <p class="text-sm text-secondary-500">15 rows detected • 12 columns • 24KB</p>
                   </div>
-                </div>
-
-                <!-- 3. Payment Terms -->
-                <div>
-                  <h3 class="text-lg leading-6 font-medium text-secondary-900">Payment Terms</h3>
-                  <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                    <!-- Payment Terms -->
-                    <div class="sm:col-span-3">
-                      <label for="paymentTerms" class="block text-sm font-medium text-secondary-700">
-                        Payment Terms
-                      </label>
-                      <div class="mt-1">
-                        <input type="text" name="paymentTerms" id="paymentTerms" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Payment Details -->
-                    <div class="sm:col-span-3">
-                      <label for="paymentDetails" class="block text-sm font-medium text-secondary-700">
-                        Payment Details
-                      </label>
-                      <div class="mt-1">
-                        <input type="text" name="paymentDetails" id="paymentDetails" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Include in Invoice Reminders -->
-                    <div class="sm:col-span-6">
-                      <div class="flex items-start">
-                        <div class="flex items-center h-5">
-                          <input id="includeInInvoiceReminders" name="includeInInvoiceReminders" type="checkbox" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300 rounded">
-                        </div>
-                        <div class="ml-3 text-sm">
-                          <label for="includeInInvoiceReminders" class="font-medium text-secondary-700">Include in invoice reminders</label>
-                          <p class="text-secondary-500">This invoice will be included in daily reminder checks.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 4. Line Items (Required) -->
-                <div>
-                  <div class="flex justify-between">
-                    <h3 class="text-lg leading-6 font-medium text-secondary-900">Line Items <span class="text-red-500">*</span></h3>
-                    <button type="button" class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                      Add Line Item
+                  <div class="ml-auto">
+                    <button type="button" class="inline-flex items-center px-3 py-1 border border-secondary-300 shadow-sm text-sm leading-4 font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                      Change File
                     </button>
                   </div>
-                  <div class="mt-6 overflow-x-auto">
-                    <table class="min-w-full divide-y divide-secondary-200">
-                      <thead class="bg-secondary-50">
-                        <tr>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
-                            Line #
-                          </th>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
-                            Description
-                          </th>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
-                            Quantity
-                          </th>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
-                            Unit Price
-                          </th>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                </div>
+                
+                <!-- Column Mapping -->
+                <div class="space-y-6">
+                  <h2 class="text-lg font-medium text-secondary-900 mb-5">Map Your Columns</h2>
+                  <p class="text-sm text-secondary-500">Map your file columns to the required invoice fields. Required fields are marked with an asterisk (*).</p>
+                  
+                  <!-- Invoice Basic Information -->
+                  <div>
+                    <h3 class="text-sm font-medium text-secondary-900 mb-3">Basic Invoice Information</h3>
+                    <div class="bg-white border border-secondary-200 rounded-md divide-y divide-secondary-200">
+                      <!-- Customer Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Customer <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">The customer being invoiced</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option selected>Select a column...</option>
+                            <option>customer_name</option>
+                            <option>client</option>
+                            <option>buyer</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Invoice Date Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Invoice Date <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">The date the invoice was issued</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>invoice_date</option>
+                            <option>date</option>
+                            <option>issue_date</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Due Date Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Due Date
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">The date payment is due</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>due_date</option>
+                            <option>payment_date</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Reference Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Reference
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Your reference number for this invoice</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option selected>Select a column...</option>
+                            <option>reference</option>
+                            <option>ref_number</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Tax Status Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Tax Status <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Whether amounts include tax</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option>tax_status</option>
+                            <option>tax_inclusive</option>
+                          </select>
+                          <div class="mt-2">
+                            <div class="flex items-center">
+                              <input id="tax-inclusive" name="tax-status" type="radio" checked class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300">
+                              <label for="tax-inclusive" class="ml-3 block text-sm font-medium text-secondary-700">
+                                Tax Inclusive (default)
+                              </label>
+                            </div>
+                            <div class="flex items-center mt-2">
+                              <input id="tax-exclusive" name="tax-status" type="radio" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-secondary-300">
+                              <label for="tax-exclusive" class="ml-3 block text-sm font-medium text-secondary-700">
+                                Tax Exclusive
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Line Items Mapping -->
+                  <div>
+                    <h3 class="text-sm font-medium text-secondary-900 mb-3">Line Items <span class="text-red-500">*</span></h3>
+                    <div class="bg-white border border-secondary-200 rounded-md divide-y divide-secondary-200">
+                      <!-- Description Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Description <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Description of the item</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>item_description</option>
+                            <option>description</option>
+                            <option>product</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Quantity Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Quantity <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Number of items</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>quantity</option>
+                            <option>qty</option>
+                            <option>amount</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Unit Price Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Unit Price <span class="text-red-500">*</span>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Price per unit</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>unit_price</option>
+                            <option>price</option>
+                            <option>rate</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <!-- Tax Rate Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
                             Tax Rate
-                          </th>
-                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
-                            Amount
-                          </th>
-                          <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Actions</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody class="bg-white divide-y divide-secondary-200">
-                        <tr>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            1
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            <input type="text" name="lineItems[0].description" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            <input type="number" name="lineItems[0].quantity" min="1" step="1" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            <input type="number" name="lineItems[0].unitPrice" min="0" step="0.01" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            <select name="lineItems[0].taxRate" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                              <option value="10">GST (10%)</option>
-                              <option value="0">No Tax (0%)</option>
-                            </select>
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
-                            $0.00
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <button type="button" class="text-red-600 hover:text-red-900">
-                              Remove
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
-                            Subtotal:
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
-                            $0.00
-                          </td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
-                            Tax:
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
-                            $0.00
-                          </td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td colspan="5" class="px-6 py-4 text-right text-sm font-medium text-secondary-900">
-                            Total:
-                          </td>
-                          <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-secondary-900">
-                            $0.00
-                          </td>
-                          <td></td>
-                        </tr>
-                      </tfoot>
-                    </table>
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Tax rate for this item</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option>Select a column...</option>
+                            <option selected>tax_rate</option>
+                            <option>gst</option>
+                            <option>vat</option>
+                          </select>
+                          <div class="mt-2">
+                            <p class="text-xs text-secondary-500">If no column is selected, the default tax rate (10% GST) will be applied.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <!-- 5. Additional Information -->
-                <div>
-                  <h3 class="text-lg leading-6 font-medium text-secondary-900">Additional Information</h3>
-                  <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                    <!-- Notes -->
-                    <div class="sm:col-span-6">
-                      <label for="notes" class="block text-sm font-medium text-secondary-700">
-                        Notes
-                      </label>
-                      <div class="mt-1">
-                        <textarea id="notes" name="notes" rows="3" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md"></textarea>
+                  
+                  <!-- Additional Information -->
+                  <div>
+                    <h3 class="text-sm font-medium text-secondary-900 mb-3">Additional Information</h3>
+                    <div class="bg-white border border-secondary-200 rounded-md divide-y divide-secondary-200">
+                      <!-- Notes Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Notes
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Additional notes for the invoice</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option selected>Select a column...</option>
+                            <option>notes</option>
+                            <option>comments</option>
+                            <option>additional_info</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-
-                    <!-- Classification -->
-                    <div class="sm:col-span-3">
-                      <label for="classification" class="block text-sm font-medium text-secondary-700">
-                        Classification
-                      </label>
-                      <div class="mt-1">
-                        <input type="text" name="classification" id="classification" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                      </div>
-                    </div>
-
-                    <!-- Template -->
-                    <div class="sm:col-span-3">
-                      <label for="template" class="block text-sm font-medium text-secondary-700">
-                        Template
-                      </label>
-                      <div class="mt-1">
-                        <select id="template" name="template" class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-secondary-300 rounded-md">
-                          <option value="default">Default Template</option>
-                          <option value="professional">Professional</option>
-                          <option value="simple">Simple</option>
-                        </select>
+                      
+                      <!-- Payment Terms Field -->
+                      <div class="grid grid-cols-3 gap-4 p-4">
+                        <div>
+                          <label class="block text-sm font-medium text-secondary-700">
+                            Payment Terms
+                          </label>
+                          <p class="text-xs text-secondary-500 mt-1">Terms of payment</p>
+                        </div>
+                        <div class="col-span-2">
+                          <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-secondary-300 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md">
+                            <option selected>Select a column...</option>
+                            <option>payment_terms</option>
+                            <option>terms</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                
+                <!-- Data Sample -->
+                <div class="mt-8">
+                  <h3 class="text-sm font-medium text-secondary-900 mb-3">Sample Data</h3>
+                  <div class="bg-white border border-secondary-200 rounded-md overflow-hidden">
+                    <div class="overflow-x-auto">
+                      <table class="min-w-full divide-y divide-secondary-200">
+                        <thead class="bg-secondary-50">
+                          <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              customer_name
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              invoice_date
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              due_date
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              item_description
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              quantity
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                              unit_price
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-secondary-200">
+                          <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              Acme Corp
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              2023-07-01
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              2023-07-31
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              Web Development Services
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              1
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">
+                              1500.00
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="bg-secondary-50 px-4 py-3 text-right sm:px-6">
+                      <span class="text-xs text-secondary-500">Showing 1 of 15 rows</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="mt-8 flex justify-end space-x-3">
+                  <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Cancel
+                  </button>
+                  <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    Create Invoices
+                  </button>
+                </div>
               </div>
-
-              <!-- Form Actions -->
-              <div class="pt-8 flex justify-end space-x-3">
-                <button type="button" class="bg-white py-2 px-4 border border-secondary-300 rounded-md shadow-sm text-sm font-medium text-secondary-700 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                  Cancel
-                </button>
-                <button type="button" class="bg-white py-2 px-4 border border-secondary-300 rounded-md shadow-sm text-sm font-medium text-secondary-700 hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                  Save as Draft
-                </button>
-                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
-                  Create Invoice
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
 </div>
 
