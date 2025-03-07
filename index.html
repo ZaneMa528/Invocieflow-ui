@@ -3221,6 +3221,126 @@
   </div>
 </div>
 
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>Invoice Processing Page</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /invoices/{id}/processing
+</div>
+
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page provides visual feedback during the automated processing of an invoice after creation. Key features include:</p>
+  <ul>
+    <li>Clear loading animation to indicate processing is in progress</li>
+    <li>Step-by-step progress indicators showing the current stage of processing</li>
+    <li>Progress bar to give users a sense of how much longer they need to wait</li>
+    <li>Informative messages explaining what's happening at each step</li>
+  </ul>
+  <p>The page is designed to keep users informed during what might otherwise be perceived as system lag, improving the overall user experience by providing transparency into the background processes.</p>
+</div>
+
+<div class="figma-frame">
+  <!-- Processing Page Container -->
+<div class="min-h-screen bg-secondary-50 flex flex-col justify-center items-center">
+  <div class="max-w-md w-full bg-white shadow-lg rounded-lg p-8">
+    <div class="text-center">
+      <div class="mx-auto h-16 w-16 relative">
+        <div class="absolute inset-0 rounded-full border-4 border-secondary-200 border-opacity-50"></div>
+        <div class="absolute inset-0 rounded-full border-4 border-t-primary-600 border-r-transparent border-b-transparent border-l-transparent animate-spin"></div>
+      </div>
+      <h2 class="mt-6 text-2xl font-bold text-secondary-900">Processing Your Invoice</h2>
+      <p class="mt-2 text-sm text-secondary-500">Please wait while we process and validate your invoice</p>
+    </div>
+    
+    <!-- Progress Steps -->
+    <div class="mt-8 space-y-6">
+      <!-- Step 1: Creating Invoice -->
+      <div class="flex items-center">
+        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+          <svg class="h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <h3 class="text-sm font-medium text-secondary-900">Creating Invoice in Reckon One</h3>
+          <p class="text-xs text-secondary-500">Invoice successfully created</p>
+        </div>
+      </div>
+      
+      <!-- Step 2: Converting to UBL XML -->
+      <div class="flex items-center">
+        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-primary-600 flex items-center justify-center animate-pulse">
+          <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <h3 class="text-sm font-medium text-secondary-900">Converting to UBL XML Format</h3>
+          <p class="text-xs text-secondary-500">Converting invoice to Australian standard format</p>
+        </div>
+      </div>
+      
+      <!-- Step 3: Validating -->
+      <div class="flex items-center opacity-50">
+        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-secondary-200 flex items-center justify-center">
+          <svg class="h-5 w-5 text-secondary-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <h3 class="text-sm font-medium text-secondary-900">Validating Against Australian Standards</h3>
+          <p class="text-xs text-secondary-500">Checking compliance with e-invoicing requirements</p>
+        </div>
+      </div>
+      
+      <!-- Step 4: Generating Report -->
+      <div class="flex items-center opacity-50">
+        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-secondary-200 flex items-center justify-center">
+          <svg class="h-5 w-5 text-secondary-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div class="ml-4">
+          <h3 class="text-sm font-medium text-secondary-900">Generating Validation Report</h3>
+          <p class="text-xs text-secondary-500">Creating detailed validation results</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Progress Bar -->
+    <div class="mt-8">
+      <div class="relative pt-1">
+        <div class="flex mb-2 items-center justify-between">
+          <div>
+            <span class="text-xs font-semibold inline-block text-primary-600">
+              Processing...
+            </span>
+          </div>
+          <div class="text-right">
+            <span class="text-xs font-semibold inline-block text-primary-600">
+              50%
+            </span>
+          </div>
+        </div>
+        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-primary-200">
+          <div style="width: 50%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary-600"></div>
+        </div>
+      </div>
+    </div>
+    
+    <p class="mt-4 text-xs text-center text-secondary-500">This may take a few moments. Please do not close this page.</p>
+  </div>
+</div>
+</div>
+
+
+
+
     <script>
     // Initialize AOS animations
         AOS.init({
