@@ -4,11 +4,11 @@
 
 This project aims to develop a web application that demonstrates e-invoicing API capabilities for Small and Medium Enterprises (SMEs) by leveraging the Reckon One API and supplementing it with additional services for Australian e-invoicing standards. The application will provide a user-friendly Website that demonstrates various e-invoicing API endpoints and their functions, focusing on three main categories:
 
-1. **Invoice Creation** - Creating invoices via Reckon One API and converting to UBL XML format
-2. **Invoice Validation** - Validating UBL XML invoices against Australian e-invoicing standards
-3. **Invoice Sending** - Transmitting invoices via email and PEPPOL network
+1. **Invoice Creation** - Creating invoices via Reckon One API with automatic conversion to UBL XML format
+2. **Invoice Validation** - Automatically validating UBL XML invoices against Australian e-invoicing standards
+3. **Invoice Sending** - Transmitting validated invoices via email and PEPPOL network
 
-The application will serve as a SaaS solution, allowing SMEs to create, validate, and send e-invoices without the need for expensive, inflexible vendor solutions that comply with Australian standards
+The application will serve as a SaaS solution, allowing SMEs to create, validate, and send e-invoices without the need for expensive, inflexible vendor solutions that comply with Australian standards.
 
 ## Core Purpose
 
@@ -16,7 +16,7 @@ The core purpose of this application is to:
 
 - Demonstrate the functionality of e-invoicing APIs through an intuitive GUI
 - Show how Reckon One API can be integrated with UBL XML conversion for Australian standards
-- Illustrate the validation process against Australian e-invoicing standards
+- Provide automated validation against Australian e-invoicing standards
 - Demonstrate invoice sending via email and PEPPOL network
 - Provide a reference implementation for SMEs considering e-invoicing solutions
 
@@ -55,15 +55,16 @@ The core purpose of this application is to:
 
 ### Invoice Creation
 
-4. **CSV/Excel to E-Invoice Conversion**
+4. **CSV/Excel to E-Invoice Conversion** (CORE)
 
-   - As a business owner, I want to upload my CSV/Excel invoice data so that it can be converted to a standardized e-invoice.
+   - As a business owner, I want to upload my CSV/Excel invoice data so that it can be automatically converted to a standardized e-invoice, validated, and prepared for sending.
    - Acceptance Criteria:
      - User can upload CSV/Excel files
      - System extracts invoice data
      - System creates invoice in Reckon One via API
-     - System converts Reckon invoice to UBL XML format
-     - User can download or proceed with the generated UBL XML invoice
+     - System automatically converts Reckon invoice to UBL XML format
+     - System automatically validates the UBL XML against Australian standards
+     - User can view validation results and send the invoice if valid
 
 5. **Manual Invoice Creation Form** (CORE)
 
@@ -72,10 +73,11 @@ The core purpose of this application is to:
      - User can fill out a form with essential invoice fields
      - System validates input in real-time
      - System creates invoice in Reckon One via API
-     - System converts Reckon invoice to UBL XML format
-     - User can download or proceed with the generated UBL XML invoice
+     - System automatically converts Reckon invoice to UBL XML format
+     - System automatically validates the UBL XML against Australian standards
+     - User can view validation results and send the invoice if valid
 
-6. **PDF Invoice Data Extraction**
+6. **PDF Invoice Data Extraction** (FUTURE)
    - As a business owner, I want to upload PDF invoices so that the system can extract data and convert it to a standardized e-invoice.
    - Acceptance Criteria:
      - User can upload PDF invoices
@@ -85,38 +87,38 @@ The core purpose of this application is to:
 
 ### Invoice Validation
 
-7. **Validate UBL XML Invoice** (CORE)
+7. **Automated UBL XML Invoice Validation** (CORE)
 
-   - As a user, I want to validate my UBL XML invoice against Australian standards so that I can ensure compliance before sending.
+   - As a user, I want my UBL XML invoice to be automatically validated against Australian standards after creation so that I can ensure compliance before sending.
    - Acceptance Criteria:
-     - User can upload or select a UBL XML invoice
-     - System validates against wellformedness, syntax rules, PEPPOL rules, and schema
+     - System automatically validates newly created invoices
+     - Validation checks wellformedness, syntax rules, PEPPOL rules, and schema
      - System displays validation results with clear error messages
      - User can see which specific rules were violated
 
 8. **View Validation Report** (CORE)
    - As a user, I want to view a validation report so that I can understand and fix any issues with my UBL XML invoice.
    - Acceptance Criteria:
-     - System displays validation errors with explanations
+     - System displays validation status (success or failure)
+     - For failed validations, system shows errors with explanations
      - User can see which specific rules were violated
      - System provides basic suggestions for fixing errors
-     - User can download the report in JSON format
 
 ### Invoice Sending
 
 9. **Send Invoice via Email** (CORE)
 
-   - As a user, I want to send my invoice via email using Reckon One API so that my client can receive it electronically.
+   - As a user, I want to send my validated invoice via email so that my client can receive it electronically.
    - Acceptance Criteria:
-     - User can select a validated e-invoice
+     - User can send a validated e-invoice directly from the validation results page
      - User can enter recipient email address
-     - System sends the invoice via Reckon One email API
+     - System sends the invoice with PDF and UBL XML attachments
      - User receives confirmation of sending
 
 10. **Send Invoice via PEPPOL** (IMPORTANT)
-    - As a user, I want to send my UBL XML invoice via the PEPPOL network so that it can be delivered to recipients on the network.
+    - As a user, I want to send my validated UBL XML invoice via the PEPPOL network so that it can be delivered to recipients on the network.
     - Acceptance Criteria:
-      - User can select a validated UBL XML invoice
+      - User can send a validated UBL XML invoice directly from the validation results page
       - User can enter recipient identifier
       - System sends the invoice to the PEPPOL network
       - User receives confirmation of sending
@@ -130,15 +132,24 @@ The core purpose of this application is to:
       - User can see a list of created/validated/sent invoices
       - User can filter invoices by status
       - User can view basic invoice details
-      - User can download invoices in UBL XML format
+      - User can download invoices in UBL XML and PDF formats
 
-12. **View API Documentation** (CORE)
+12. **View Invoice Details** (CORE)
+
+    - As a user, I want to view detailed information about a specific invoice so that I can review its contents and status.
+    - Acceptance Criteria:
+      - User can see all invoice details including line items
+      - User can see validation status and sending status
+      - User can download the invoice in UBL XML and PDF formats
+      - User can resend the invoice if needed
+
+13. **View API Documentation** (CORE)
     - As a user, I want to view documentation about the e-invoicing APIs so that I can understand how they work.
     - Acceptance Criteria:
-      - User can access documentation for each API endpoint
-      - Documentation includes request/response formats
-      - Documentation includes authentication methods
-      - Documentation includes example code snippets
+      - User can access comprehensive documentation for the business process flow
+      - Documentation includes API integration steps
+      - Documentation includes UBL conversion details
+      - Documentation includes validation and sending processes
 
 ## Future Enhancements (Post-MVP)
 
@@ -171,9 +182,9 @@ The core purpose of this application is to:
 2. Reckon One API integration
 3. Invoice creation from CSV/Excel
 4. Manual invoice creation form
-5. UBL XML conversion
-6. Invoice validation against Australian standards
-7. Email sending functionality via Reckon One API
+5. Automated UBL XML conversion
+6. Automated invoice validation against Australian standards
+7. Email sending functionality
 8. Basic PEPPOL network integration
 9. Dashboard to view invoice history
 10. API documentation
@@ -217,7 +228,7 @@ The core purpose of this application is to:
 
 ## Page Structure Analysis
 
-Based on the user stories and requirements, the following pages will be needed to create a comprehensive and user-friendly e-invoicing platform:
+Based on the latest design and automated workflow, the following pages will be needed:
 
 ### 1. Authentication Pages
 
@@ -230,20 +241,18 @@ Based on the user stories and requirements, the following pages will be needed t
 
 - **Main Dashboard** - Overview of recent activity, quick access to main functions
   - Summary statistics (invoices created, validated, sent)
-  - Recent invoices
-  - Quick action buttons for main functions
+  - Recent invoices with status indicators
+  - Quick action button for creating new invoices
 
 ### 3. Invoice Creation Pages
 
-- **Creation Method Selection Page** - Options to choose how to create an invoice
-- **CSV/Excel Upload Page** - Interface for uploading and mapping CSV/Excel files
+- **CSV/Excel Upload Page** - Interface for uploading CSV/Excel files
 
   - File upload area
-  - Column mapping interface
-  - Preview of extracted data
+  - Processing indicator
+  - Direct creation without preview step
 
 - **Manual Invoice Form Page** - Form with required fields for manual invoice creation
-
   - Structured form with sections for:
     - Seller details
     - Buyer details
@@ -252,78 +261,65 @@ Based on the user stories and requirements, the following pages will be needed t
     - Tax information
     - Payment terms
   - Real-time validation
+  - Direct submission for processing
 
-- **PDF Upload Page** (secondary feature) - Interface for uploading PDF invoices
-  - File upload area
-  - Data extraction preview
-  - Correction interface
+### 4. Processing and Validation Pages
 
-### 4. Invoice Validation Pages
+- **Processing Page** - Shows the automated workflow in progress
 
-- **Validation Page** - Interface to upload or select invoices for validation
-
-  - File upload area or selection from existing invoices
-  - Validation options
-  - Submit button
+  - Progress indicators for each step:
+    - Invoice creation in Reckon One
+    - UBL XML conversion
+    - Validation against Australian standards
+  - Automatic transition to validation results
 
 - **Validation Results Page** - Display of validation results
   - Summary of validation status
-  - Detailed error list with explanations
-  - Basic fix suggestions
-  - Download report option
+  - UBL XML preview
+  - For successful validations:
+    - Option to send via email
+    - Option to send via PEPPOL
+  - For failed validations:
+    - Detailed error list with explanations
+    - Option to go back and fix issues
 
-### 5. Invoice Sending Pages
-
-- **Email Sending Page** - Form to send invoice via email
-
-  - Invoice selection
-  - Recipient details
-  - Email content customization
-  - Send button
-
-- **PEPPOL Sending Page** - Form to send invoice via PEPPOL
-  - Invoice selection
-  - Recipient identifier input
-  - Send button
-
-### 6. Management Pages
+### 5. Management Pages
 
 - **Invoice History Page** - List of all invoices with filtering
 
   - Sortable and filterable table of invoices
-  - Basic search functionality
+  - Status indicators (Created, Validated, Sent, Failed)
   - Action buttons (view, download, send)
 
 - **Invoice Detail Page** - Detailed view of a specific invoice
+
   - Complete invoice information
+  - Line items table
   - Status information
-  - Action buttons (validate, send, download)
-- **API Documentation Page** - Documentation for the e-invoicing APIs
-  - Endpoint descriptions
-  - Request/response formats
-  - Authentication methods
-  - Error handling procedures
+  - UBL XML preview
+  - Action buttons (download, resend)
 
-### 7. Settings Pages
+- **API Documentation Page** - Documentation for the e-invoicing process
+  - Business process flow
+  - API integration steps
+  - UBL conversion details
+  - Validation and sending processes
+  - SME guidelines
 
-- **Account Settings Page** - User profile and account settings
-  - Personal information
-  - Business details
-  - Password change
-- **Preferences Page** - User preferences for the platform
-  - Default settings for invoice creation
-  - Email templates
-  - Notification preferences
+### 6. Error Pages
+
+- **404 Page** - Custom page for not found errors
+  - Clear error message
+  - Navigation options to key pages
+  - Popular pages links
 
 ### Page Flow Diagram
 
-The user journey through these pages would typically follow this flow:
+The user journey through these pages would typically follow this streamlined flow:
 
 1. User registers/logs in → Dashboard
 2. From Dashboard:
-   - Create Invoice → Creation Method Selection → Specific Creation Page → Preview → Save/Validate
-   - Validate Invoice → Validation Page → Validation Results
-   - Send Invoice → Sending Method Selection → Specific Sending Page → Confirmation
+   - Create Invoice → Choose Method (Manual Form or CSV Upload) → Processing → Validation Results → Send Invoice (if valid)
    - View History → Invoice History → Invoice Detail
    - View Documentation → API Documentation
 
@@ -344,7 +340,7 @@ The user journey through these pages would typically follow this flow:
 
    - Implement tooltips and help text for complex fields
    - Provide clear error messages and validation feedback
-   - Include progress indicators for multi-step processes
+   - Include progress indicators for automated processes
 
 4. **Accessibility**
    - Ensure proper contrast ratios for text
@@ -353,6 +349,6 @@ The user journey through these pages would typically follow this flow:
 
 ## Conclusion
 
-This project will deliver a functional demonstration of e-invoicing APIs through a user-friendly GUI. By focusing on the core features of invoice creation with Reckon One API, UBL XML conversion, validation against Australian standards, and sending via email and PEPPOL, the application will provide SMEs with a reference implementation for e-invoicing solutions.
+This project will deliver a functional demonstration of e-invoicing APIs through a user-friendly GUI with an automated workflow. By focusing on the core features of invoice creation with Reckon One API, automatic UBL XML conversion, validation against Australian standards, and sending via email and PEPPOL, the application will provide SMEs with a streamlined e-invoicing solution.
 
-The development plan is designed to be achievable by a team of four (2 frontend, 2 backend) within a 6-week timeframe by prioritizing essential features and limiting scope to the most critical functionality. The user stories outlined above capture the core requirements while ensuring the project remains manageable within the given constraints.
+The updated design emphasizes automation and simplicity, reducing the number of steps required to create, validate, and send e-invoices. This approach not only improves the user experience but also reduces the potential for errors in the e-invoicing process.
