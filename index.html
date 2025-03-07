@@ -4125,6 +4125,1369 @@ Your Company</textarea>
   </div>
 </div>
 
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>Invoice Detail Page</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /invoices/{id}
+</div>
+
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page displays detailed information about a specific invoice. It's accessed from the Dashboard's Invoice History section. Key features include:</p>
+  <ul>
+    <li>Invoice status and basic information</li>
+    <li>UBL XML preview with syntax highlighting</li>
+    <li>Download options for different formats</li>
+    <li>Action buttons based on invoice status (send, validate, etc.)</li>
+    <li>Simplified layout focused on viewing and managing a single invoice</li>
+  </ul>
+  <p>The page reuses components from the Validation Results page but with a more streamlined approach, focusing on providing essential information and actions for an existing invoice.</p>
+</div>
+
+<div class="figma-frame">
+  <!-- Invoice Detail Page Container -->
+  <div class="min-h-screen bg-secondary-50">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Invoices
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                API Docs
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Settings
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <button class="bg-white p-1 rounded-full text-secondary-400 hover:text-secondary-500 focus:outline-none">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </button>
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="py-10">
+      <header>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="md:flex md:items-center md:justify-between">
+            <div class="flex-1 min-w-0">
+              <h1 class="text-3xl font-bold leading-tight text-secondary-900">
+                Invoice INV-2023-001
+              </h1>
+              <p class="mt-1 text-sm text-secondary-500">
+                Created on May 21, 2023 • Acme Corporation
+              </p>
+            </div>
+            <div class="mt-4 flex md:mt-0 md:ml-4">
+              <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                Sent
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+          <!-- Invoice Summary -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6">
+              <h2 class="text-lg leading-6 font-medium text-secondary-900">Invoice Summary</h2>
+              <p class="mt-1 max-w-2xl text-sm text-secondary-500">Key details and status information</p>
+            </div>
+            <div class="border-t border-secondary-200">
+              <dl>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Invoice Number</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">INV-2023-001</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Customer</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">Acme Corporation</dd>
+                </div>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Issue Date</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">May 21, 2023</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Due Date</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">June 20, 2023</dd>
+                </div>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Amount</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">$1,200.00 AUD</dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Status</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Sent on May 22, 2023
+                    </span>
+                  </dd>
+                </div>
+                <div class="bg-secondary-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-secondary-500">Validation Status</dt>
+                  <dd class="mt-1 text-sm text-secondary-900 sm:mt-0 sm:col-span-2">
+                    <div class="flex items-center">
+                      <svg class="h-5 w-5 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>Passed all validation checks</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- E-Invoice Preview -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+              <div>
+                <h2 class="text-lg leading-6 font-medium text-secondary-900">UBL XML E-Invoice</h2>
+                <p class="mt-1 max-w-2xl text-sm text-secondary-500">Standardized e-invoice in UBL XML format</p>
+              </div>
+              <div>
+                <div class="flex space-x-3">
+                  <button type="button" class="inline-flex items-center px-3 py-1.5 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <svg class="-ml-1 mr-2 h-4 w-4 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Download XML
+                  </button>
+                  <button type="button" class="inline-flex items-center px-3 py-1.5 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                    <svg class="-ml-1 mr-2 h-4 w-4 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Download PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-secondary-200 px-4 py-5 sm:px-6">
+              <div class="bg-secondary-800 rounded-md p-4 overflow-auto max-h-64">
+                <pre class="text-xs text-secondary-100 font-mono">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"&gt;
+  &lt;cbc:CustomizationID&gt;urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0&lt;/cbc:CustomizationID&gt;
+  &lt;cbc:ProfileID&gt;urn:fdc:peppol.eu:2017:poacc:billing:01:1.0&lt;/cbc:ProfileID&gt;
+  &lt;cbc:ID&gt;INV-2023-001&lt;/cbc:ID&gt;
+  &lt;cbc:IssueDate&gt;2023-05-21&lt;/cbc:IssueDate&gt;
+  &lt;cbc:DueDate&gt;2023-06-20&lt;/cbc:DueDate&gt;
+  &lt;cbc:InvoiceTypeCode&gt;380&lt;/cbc:InvoiceTypeCode&gt;
+  &lt;cbc:DocumentCurrencyCode&gt;AUD&lt;/cbc:DocumentCurrencyCode&gt;
+  &lt;cbc:AccountingCost&gt;4025:123:4343&lt;/cbc:AccountingCost&gt;
+  &lt;cbc:BuyerReference&gt;0150abc&lt;/cbc:BuyerReference&gt;
+  
+  &lt;!-- More XML content... --&gt;
+&lt;/Invoice&gt;
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice Line Items -->
+          <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-5">
+            <div class="px-4 py-5 sm:px-6">
+              <h2 class="text-lg leading-6 font-medium text-secondary-900">Line Items</h2>
+              <p class="mt-1 max-w-2xl text-sm text-secondary-500">Products and services included in this invoice</p>
+            </div>
+            <div class="border-t border-secondary-200">
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-secondary-200">
+                  <thead class="bg-secondary-50">
+                    <tr>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Description</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Quantity</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Unit Price</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Tax</th>
+                      <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-secondary-200">
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">Web Development Services</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">1</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$1,000.00</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$100.00 (10%)</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$1,100.00</td>
+                    </tr>
+                    <tr>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">Domain Registration</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">1</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$100.00</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$0.00 (0%)</td>
+                      <td class="px-6 py-4 whitespace-nowrap text-sm text-secondary-500">$100.00</td>
+                    </tr>
+                  </tbody>
+                  <tfoot class="bg-secondary-50">
+                    <tr>
+                      <td colspan="4" class="px-6 py-3 text-right text-sm font-medium text-secondary-900">Subtotal:</td>
+                      <td class="px-6 py-3 text-sm text-secondary-900">$1,100.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="px-6 py-3 text-right text-sm font-medium text-secondary-900">Tax:</td>
+                      <td class="px-6 py-3 text-sm text-secondary-900">$100.00</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="px-6 py-3 text-right text-sm font-medium text-secondary-900">Total:</td>
+                      <td class="px-6 py-3 text-sm font-bold text-secondary-900">$1,200.00</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-8 flex justify-end space-x-3">
+            <button type="button" class="inline-flex items-center px-4 py-2 border border-secondary-300 shadow-sm text-sm font-medium rounded-md text-secondary-700 bg-white hover:bg-secondary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <svg class="-ml-1 mr-2 h-5 w-5 text-secondary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+              </svg>
+              Back to Dashboard
+            </button>
+            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+              <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+              </svg>
+              Send Again
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>API Documentation Page</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /documentation
+</div>
+
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This page provides documentation specifically for our e-invoicing platform implementation. The content focuses only on features we've actually built, with no speculative or future functionality. The design maintains the clean, professional aesthetic established in other pages.</p>
+</div>
+
+<div class="figma-frame">
+  <!-- Documentation Page Container -->
+  <div class="min-h-screen bg-white">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Invoices
+              </a>
+              <a href="#" class="border-primary-500 text-secondary-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                API Docs
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Settings
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Documentation Content -->
+    <div class="py-6">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+          <!-- Sidebar Navigation -->
+          <div class="hidden lg:block lg:col-span-3">
+            <nav class="sticky top-6 space-y-1" aria-label="Sidebar">
+              <a href="#overview" class="bg-secondary-50 text-primary-600 hover:bg-secondary-50 hover:text-primary-600 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-primary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="truncate">Overview</span>
+              </a>
+
+              <a href="#business-process" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <span class="truncate">Business Process Flow</span>
+              </a>
+
+              <a href="#reckon-integration" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="truncate">Reckon One Integration</span>
+              </a>
+
+              <a href="#invoice-creation" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <span class="truncate">Invoice Creation</span>
+              </a>
+
+              <a href="#ubl-conversion" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+                <span class="truncate">UBL Conversion</span>
+              </a>
+
+              <a href="#validation" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="truncate">Validation</span>
+              </a>
+
+              <a href="#sending" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                <span class="truncate">Sending Invoices</span>
+              </a>
+
+              <a href="#sme-guidelines" class="text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                <svg class="text-secondary-400 group-hover:text-secondary-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="truncate">SME Guidelines</span>
+              </a>
+            </nav>
+          </div>
+
+          <!-- Main Content -->
+          <div class="lg:col-span-9">
+            <div class="prose prose-primary max-w-none">
+              <!-- Overview Section -->
+              <section id="overview" class="mb-16">
+                <h1 class="text-3xl font-extrabold text-secondary-900 tracking-tight sm:text-4xl">E-Invoicing Platform Documentation</h1>
+                <p class="mt-4 text-xl text-secondary-500">
+                  This documentation outlines the business process flow and integration details for our e-invoicing platform, which helps SMEs create, validate, and send e-invoices that comply with Australian standards.
+                </p>
+
+                <div class="mt-6 bg-secondary-50 rounded-lg p-6">
+                  <h2 class="text-lg font-medium text-secondary-900">Platform Overview</h2>
+                  <p class="mt-2 text-secondary-700">
+                    Our e-invoicing platform integrates with Reckon One to provide a seamless e-invoicing solution for Australian SMEs. The platform allows you to:
+                  </p>
+                  <ul class="mt-4 space-y-2">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-secondary-700">Create invoices manually or by uploading CSV/Excel files</p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-secondary-700">Convert invoices to UBL XML format compliant with Australian standards</p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-secondary-700">Validate invoices against Australian e-invoicing standards using the ESS Validator</p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-primary-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <p class="ml-3 text-secondary-700">Send validated invoices via email or the PEPPOL network</p>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- Business Process Flow Section -->
+              <section id="business-process" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">Business Process Flow</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  Our e-invoicing platform follows a streamlined process to create, validate, and send e-invoices.
+                </p>
+
+                <!-- Process Flow Diagram -->
+                <div class="mt-6 bg-white p-6 rounded-lg border border-secondary-200">
+                  <div class="flex flex-col items-center">
+                    <!-- Step 1 -->
+                    <div class="flex items-center justify-center w-64 h-20 bg-primary-50 rounded-lg border border-primary-200 text-center p-4">
+                      <div>
+                        <div class="font-medium text-primary-700">1. Invoice Creation</div>
+                        <div class="text-xs text-primary-600 mt-1">CSV/Excel/Manual Entry</div>
+                      </div>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="h-8 w-0.5 bg-secondary-300"></div>
+                    <!-- Step 2 -->
+                    <div class="flex items-center justify-center w-64 h-20 bg-green-50 rounded-lg border border-green-200 text-center p-4">
+                      <div>
+                        <div class="font-medium text-green-700">2. UBL XML Conversion</div>
+                        <div class="text-xs text-green-600 mt-1">Australian Standard Format</div>
+                      </div>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="h-8 w-0.5 bg-secondary-300"></div>
+                    <!-- Step 3 -->
+                    <div class="flex items-center justify-center w-64 h-20 bg-blue-50 rounded-lg border border-blue-200 text-center p-4">
+                      <div>
+                        <div class="font-medium text-blue-700">3. Invoice Validation</div>
+                        <div class="text-xs text-blue-600 mt-1">ESS Validator</div>
+                      </div>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="h-8 w-0.5 bg-secondary-300"></div>
+                    <!-- Step 4 -->
+                    <div class="flex items-center justify-center w-64 h-20 bg-yellow-50 rounded-lg border border-yellow-200 text-center p-4">
+                      <div>
+                        <div class="font-medium text-yellow-700">4. Invoice Sending</div>
+                        <div class="text-xs text-yellow-600 mt-1">Email or PEPPOL Network</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Process Description</h3>
+                
+                <div class="mt-4 space-y-6">
+                  <div>
+                    <h4 class="text-lg font-medium text-primary-700">1. Invoice Creation</h4>
+                    <p class="mt-2 text-secondary-700">
+                      Create invoices using one of two methods:
+                    </p>
+                    <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                      <li>Upload a CSV or Excel file with invoice data</li>
+                      <li>Manually enter invoice details through our form</li>
+                    </ul>
+                    <p class="mt-2 text-secondary-700">
+                      The invoice data is sent to the Reckon One API to create a standard invoice in their format.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-green-700">2. UBL XML Conversion</h4>
+                    <p class="mt-2 text-secondary-700">
+                      After creating the invoice in Reckon One, our platform automatically converts it to UBL XML format, which is the standard required for Australian e-invoicing. This conversion maps all relevant fields to their corresponding UBL XML elements.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-blue-700">3. Invoice Validation</h4>
+                    <p class="mt-2 text-secondary-700">
+                      The UBL XML invoice is validated against Australian e-invoicing standards using the ESS Validator. This validation includes:
+                    </p>
+                    <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                      <li>XML wellformedness checking</li>
+                      <li>Schema validation against UBL 2.1 XSD</li>
+                      <li>Business rules validation (EN16931)</li>
+                      <li>PEPPOL rules validation (Australia-specific)</li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-yellow-700">4. Invoice Sending</h4>
+                    <p class="mt-2 text-secondary-700">
+                      Once validated, the invoice can be sent using one of two methods:
+                    </p>
+                    <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                      <li>Email: Send via email with PDF and UBL XML attachments</li>
+                      <li>PEPPOL Network: Send directly to recipients on the PEPPOL network</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Reckon One Integration Section -->
+              <section id="reckon-integration" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">Reckon One Integration</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  Our platform integrates with Reckon One to create and manage invoices. This section explains how the integration works.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Authentication</h3>
+                <p class="mt-4 text-secondary-700">
+                  To connect with Reckon One, you need to authenticate using your Reckon credentials. Our platform securely stores your connection details and uses them to interact with the Reckon One API.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Book Selection</h3>
+                <p class="mt-4 text-secondary-700">
+                  Reckon One organizes data into "books." After authentication, you'll need to select which book to use for your e-invoices. The <code>bookId</code> is a crucial parameter used in all API calls to Reckon One.
+                </p>
+
+                <div class="mt-4 bg-secondary-50 rounded-lg p-4">
+                  <h4 class="text-md font-medium text-secondary-900">Important Note</h4>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    All API calls to Reckon One require a <code>bookId</code> parameter. This identifies which set of business data to work with. You can find your available books in the Reckon One dashboard or through our platform's settings page.
+                  </p>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">API Endpoints Used</h3>
+                <div class="mt-4 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                  <table class="min-w-full divide-y divide-secondary-300">
+                    <thead class="bg-secondary-50">
+                      <tr>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-secondary-900 sm:pl-6">Endpoint</th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-secondary-900">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-secondary-200 bg-white">
+                      <tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-mono text-secondary-900 sm:pl-6">GET /{bookId}/invoices</td>
+                        <td class="px-3 py-4 text-sm text-secondary-500">Retrieves a list of invoices from the specified book</td>
+                      </tr>
+                      <tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-mono text-secondary-900 sm:pl-6">POST /{bookId}/invoices</td>
+                        <td class="px-3 py-4 text-sm text-secondary-500">Creates a new invoice in the specified book</td>
+                      </tr>
+                      <tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-mono text-secondary-900 sm:pl-6">GET /{bookId}/invoices/{id}</td>
+                        <td class="px-3 py-4 text-sm text-secondary-500">Retrieves a specific invoice by ID</td>
+                      </tr>
+                      <tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-mono text-secondary-900 sm:pl-6">GET /{bookId}/contacts</td>
+                        <td class="px-3 py-4 text-sm text-secondary-500">Retrieves customer contacts for invoice creation</td>
+                      </tr>
+                      <tr>
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-mono text-secondary-900 sm:pl-6">GET /{bookId}/tax-rates</td>
+                        <td class="px-3 py-4 text-sm text-secondary-500">Retrieves available tax rates for invoice line items</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <!-- Invoice Creation Section -->
+              <section id="invoice-creation" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">Invoice Creation</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  Our platform provides two methods for creating invoices: manual entry and CSV/Excel upload.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Manual Invoice Creation</h3>
+                <p class="mt-4 text-secondary-700">
+                  The manual invoice form allows you to create invoices by entering all details directly. The form includes fields for:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li>Customer information (name, ABN, address, contact details)</li>
+                  <li>Invoice details (number, date, due date, reference)</li>
+                  <li>Line items (description, quantity, unit price, tax)</li>
+                  <li>Notes and payment terms</li>
+                </ul>
+
+                <p class="mt-4 text-secondary-700">
+                  When you submit the form, our platform creates the invoice in Reckon One using the following API call:
+                </p>
+
+                <div class="mt-4 border border-secondary-200 rounded-md">
+                  <div class="bg-secondary-50 px-4 py-2 border-b border-secondary-200 flex items-center">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-green-100 text-green-800">
+                      POST
+                    </span>
+                    <span class="ml-2 text-secondary-900 font-mono text-sm">/{bookId}/invoices</span>
+                  </div>
+                  <div class="p-4">
+                    <h4 class="text-lg font-medium text-secondary-900">Request Body Example</h4>
+                    <div class="mt-2 bg-secondary-800 rounded-md overflow-auto">
+                      <pre class="text-xs text-secondary-100 p-4 font-mono">
+{
+  "customerId": "cust123",
+  "invoiceNumber": "INV-2023-001",
+  "reference": "PO-2023-001",
+  "issueDate": "2023-07-15T00:00:00Z",
+  "dueDate": "2023-08-15T00:00:00Z",
+  "status": "Draft",
+  "currencyCode": "AUD",
+  "taxInclusive": true,
+  "lines": [
+    {
+      "description": "Web Development Services",
+      "quantity": 1.0,
+      "unitPrice": 100.0,
+      "taxRateId": "tax001"
+    }
+  ]
+}</pre>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">CSV/Excel Upload</h3>
+                                <p class="mt-4 text-secondary-700">
+                  The CSV/Excel upload feature allows you to create multiple invoices at once by uploading a spreadsheet. The file should contain columns for:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li>Customer details (name, ABN, email)</li>
+                  <li>Invoice details (number, date, due date)</li>
+                  <li>Line item details (description, quantity, unit price, tax)</li>
+                </ul>
+
+                <p class="mt-4 text-secondary-700">
+                  Our platform processes the file, maps the columns to the appropriate fields, and creates invoices in Reckon One for each row in the spreadsheet.
+                </p>
+
+                <div class="mt-4 bg-secondary-50 rounded-lg p-4">
+                  <h4 class="text-md font-medium text-secondary-900">CSV Format Requirements</h4>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    Your CSV file should have headers in the first row. The following columns are required:
+                  </p>
+                  <ul class="mt-2 text-sm list-disc pl-5 text-secondary-700">
+                    <li>Customer Name</li>
+                    <li>Customer Email</li>
+                    <li>Invoice Date</li>
+                    <li>Due Date</li>
+                    <li>Description</li>
+                    <li>Quantity</li>
+                    <li>Unit Price</li>
+                    <li>Tax Rate</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- UBL Conversion Section -->
+              <section id="ubl-conversion" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">UBL Conversion</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  After creating an invoice in Reckon One, our platform automatically converts it to UBL XML format, which is required for Australian e-invoicing.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Conversion Process</h3>
+                <p class="mt-4 text-secondary-700">
+                  The conversion process maps Reckon One invoice fields to their corresponding UBL XML elements. This includes:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li>Invoice header information (ID, issue date, due date)</li>
+                  <li>Supplier details (name, ABN, address, contact information)</li>
+                  <li>Customer details (name, ABN, address, contact information)</li>
+                  <li>Line items (description, quantity, unit price, tax)</li>
+                  <li>Payment terms and instructions</li>
+                </ul>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">UBL XML Structure</h3>
+                <p class="mt-4 text-secondary-700">
+                  The UBL XML follows the structure required by the Australian e-invoicing standard, which is based on the PEPPOL BIS Billing 3.0 specification.
+                </p>
+
+                <div class="mt-4 border border-secondary-200 rounded-md">
+                  <div class="bg-secondary-50 px-4 py-2 border-b border-secondary-200">
+                    <h4 class="text-md font-medium text-secondary-900">Sample UBL XML Structure</h4>
+                  </div>
+                  <div class="p-4">
+                    <div class="bg-secondary-800 rounded-md overflow-auto">
+                      <pre class="text-xs text-secondary-100 p-4 font-mono">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"&gt;
+  &lt;cbc:CustomizationID&gt;urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0&lt;/cbc:CustomizationID&gt;
+  &lt;cbc:ProfileID&gt;urn:fdc:peppol.eu:2017:poacc:billing:01:1.0&lt;/cbc:ProfileID&gt;
+  &lt;cbc:ID&gt;INV-2023-001&lt;/cbc:ID&gt;
+  &lt;cbc:IssueDate&gt;2023-07-15&lt;/cbc:IssueDate&gt;
+  &lt;cbc:DueDate&gt;2023-08-15&lt;/cbc:DueDate&gt;
+  &lt;cbc:InvoiceTypeCode&gt;380&lt;/cbc:InvoiceTypeCode&gt;
+  &lt;cbc:DocumentCurrencyCode&gt;AUD&lt;/cbc:DocumentCurrencyCode&gt;
+  &lt;cbc:BuyerReference&gt;PO-2023-001&lt;/cbc:BuyerReference&gt;
+  
+  &lt;!-- Supplier Information --&gt;
+  &lt;cac:AccountingSupplierParty&gt;
+    &lt;cac:Party&gt;
+      &lt;cbc:EndpointID schemeID="0151"&gt;47555222000&lt;/cbc:EndpointID&gt;
+      &lt;cac:PartyIdentification&gt;
+        &lt;cbc:ID&gt;47555222000&lt;/cbc:ID&gt;
+      &lt;/cac:PartyIdentification&gt;
+      &lt;cac:PartyName&gt;
+        &lt;cbc:Name&gt;Supplier Company Name&lt;/cbc:Name&gt;
+      &lt;/cac:PartyName&gt;
+      &lt;!-- Address and contact details --&gt;
+    &lt;/cac:Party&gt;
+  &lt;/cac:AccountingSupplierParty&gt;
+  
+  &lt;!-- Customer Information --&gt;
+  &lt;cac:AccountingCustomerParty&gt;
+    &lt;cac:Party&gt;
+      &lt;cbc:EndpointID schemeID="0151"&gt;91888333000&lt;/cbc:EndpointID&gt;
+      &lt;cac:PartyIdentification&gt;
+        &lt;cbc:ID&gt;91888333000&lt;/cbc:ID&gt;
+      &lt;/cac:PartyIdentification&gt;
+      &lt;cac:PartyName&gt;
+        &lt;cbc:Name&gt;Customer Company Name&lt;/cbc:Name&gt;
+      &lt;/cac:PartyName&gt;
+      &lt;!-- Address and contact details --&gt;
+    &lt;/cac:Party&gt;
+  &lt;/cac:AccountingCustomerParty&gt;
+  
+  &lt;!-- Payment Terms --&gt;
+  &lt;cac:PaymentTerms&gt;
+    &lt;cbc:Note&gt;Payment due within 30 days&lt;/cbc:Note&gt;
+  &lt;/cac:PaymentTerms&gt;
+  
+  &lt;!-- Tax Information --&gt;
+  &lt;cac:TaxTotal&gt;
+    &lt;cbc:TaxAmount currencyID="AUD"&gt;10.00&lt;/cbc:TaxAmount&gt;
+    &lt;cac:TaxSubtotal&gt;
+      &lt;cbc:TaxableAmount currencyID="AUD"&gt;100.00&lt;/cbc:TaxableAmount&gt;
+      &lt;cbc:TaxAmount currencyID="AUD"&gt;10.00&lt;/cbc:TaxAmount&gt;
+      &lt;cac:TaxCategory&gt;
+        &lt;cbc:ID&gt;S&lt;/cbc:ID&gt;
+        &lt;cbc:Percent&gt;10&lt;/cbc:Percent&gt;
+        &lt;cac:TaxScheme&gt;
+          &lt;cbc:ID&gt;GST&lt;/cbc:ID&gt;
+        &lt;/cac:TaxScheme&gt;
+      &lt;/cac:TaxCategory&gt;
+    &lt;/cac:TaxSubtotal&gt;
+  &lt;/cac:TaxTotal&gt;
+  
+  &lt;!-- Invoice Totals --&gt;
+  &lt;cac:LegalMonetaryTotal&gt;
+    &lt;cbc:LineExtensionAmount currencyID="AUD"&gt;100.00&lt;/cbc:LineExtensionAmount&gt;
+    &lt;cbc:TaxExclusiveAmount currencyID="AUD"&gt;100.00&lt;/cbc:TaxExclusiveAmount&gt;
+    &lt;cbc:TaxInclusiveAmount currencyID="AUD"&gt;110.00&lt;/cbc:TaxInclusiveAmount&gt;
+    &lt;cbc:PayableAmount currencyID="AUD"&gt;110.00&lt;/cbc:PayableAmount&gt;
+  &lt;/cac:LegalMonetaryTotal&gt;
+  
+  &lt;!-- Invoice Line Items --&gt;
+  &lt;cac:InvoiceLine&gt;
+    &lt;cbc:ID&gt;1&lt;/cbc:ID&gt;
+    &lt;cbc:InvoicedQuantity unitCode="EA"&gt;1&lt;/cbc:InvoicedQuantity&gt;
+    &lt;cbc:LineExtensionAmount currencyID="AUD"&gt;100.00&lt;/cbc:LineExtensionAmount&gt;
+    &lt;cac:Item&gt;
+      &lt;cbc:Name&gt;Web Development Services&lt;/cbc:Name&gt;
+      &lt;cac:ClassifiedTaxCategory&gt;
+        &lt;cbc:ID&gt;S&lt;/cbc:ID&gt;
+        &lt;cbc:Percent&gt;10&lt;/cbc:Percent&gt;
+        &lt;cac:TaxScheme&gt;
+          &lt;cbc:ID&gt;GST&lt;/cbc:ID&gt;
+        &lt;/cac:TaxScheme&gt;
+      &lt;/cac:ClassifiedTaxCategory&gt;
+    &lt;/cac:Item&gt;
+    &lt;cac:Price&gt;
+      &lt;cbc:PriceAmount currencyID="AUD"&gt;100.00&lt;/cbc:PriceAmount&gt;
+    &lt;/cac:Price&gt;
+  &lt;/cac:InvoiceLine&gt;
+&lt;/Invoice&gt;</pre>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Validation Section -->
+              <section id="validation" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">Validation</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  Our platform validates UBL XML invoices against Australian e-invoicing standards using the ESS Validator.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Validation Process</h3>
+                <p class="mt-4 text-secondary-700">
+                  The validation process includes several checks to ensure the invoice complies with Australian e-invoicing standards:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li><strong>XML Wellformedness:</strong> Checks that the XML is properly formed</li>
+                  <li><strong>Schema Validation:</strong> Validates against the UBL 2.1 XML Schema</li>
+                  <li><strong>Business Rules:</strong> Checks compliance with EN16931 business rules</li>
+                  <li><strong>PEPPOL Rules:</strong> Validates against Australia-specific PEPPOL rules</li>
+                </ul>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Validation Results</h3>
+                <p class="mt-4 text-secondary-700">
+                  After validation, our platform displays the results, including any errors or warnings that need to be addressed. If the invoice passes validation, it's ready to be sent.
+                </p>
+
+                <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                      <h4 class="text-lg font-medium text-secondary-900">Successful Validation</h4>
+                      <div class="mt-4 flex items-center">
+                        <svg class="h-8 w-8 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="ml-4">
+                          <p class="text-sm font-medium text-secondary-900">Invoice is valid</p>
+                          <p class="text-sm text-secondary-500">All validation checks passed</p>
+                        </div>
+                      </div>
+                      <ul class="mt-4 space-y-2">
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          XML is well-formed
+                        </li>
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          Schema validation passed
+                        </li>
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          Business rules validation passed
+                        </li>
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          PEPPOL rules validation passed
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                      <h4 class="text-lg font-medium text-secondary-900">Failed Validation</h4>
+                      <div class="mt-4 flex items-center">
+                        <svg class="h-8 w-8 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="ml-4">
+                          <p class="text-sm font-medium text-secondary-900">Invoice is invalid</p>
+                          <p class="text-sm text-secondary-500">Validation errors found</p>
+                        </div>
+                      </div>
+                      <ul class="mt-4 space-y-2">
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          XML is well-formed
+                        </li>
+                        <li class="flex items-center text-sm text-green-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                          </svg>
+                          Schema validation passed
+                        </li>
+                        <li class="flex items-center text-sm text-red-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                          </svg>
+                          Business rules validation failed
+                        </li>
+                        <li class="flex items-center text-sm text-red-600">
+                          <svg class="h-5 w-5 mr-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                          </svg>
+                          PEPPOL rules validation failed
+                        </li>
+                      </ul>
+                      <div class="mt-4 bg-red-50 p-3 rounded-md">
+                        <h5 class="text-sm font-medium text-red-800">Error Details</h5>
+                        <ul class="mt-2 text-sm text-red-700 list-disc pl-5">
+                          <li>Missing mandatory field: Buyer reference</li>
+                          <li>Invalid tax category: Must be one of S, Z, E, AE, K, G, O, L, M</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Sending Invoices Section -->
+              <section id="sending" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">Sending Invoices</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  After an invoice has been validated, you can send it to your customer via email or the PEPPOL network.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Email Sending</h3>
+                <p class="mt-4 text-secondary-700">
+                  When sending via email, our platform:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li>Generates a PDF version of the invoice</li>
+                  <li>Attaches both the PDF and UBL XML files to the email</li>
+                  <li>Sends the email to the customer's email address</li>
+                  <li>Updates the invoice status in Reckon One</li>
+                </ul>
+
+                <div class="mt-4 bg-secondary-50 rounded-lg p-4">
+                  <h4 class="text-md font-medium text-secondary-900">Email Template</h4>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    The default email template includes:
+                  </p>
+                  <ul class="mt-2 text-sm list-disc pl-5 text-secondary-700">
+                    <li>Your company name and logo</li>
+                    <li>Invoice number and amount</li>
+                    <li>Due date and payment instructions</li>
+                    <li>PDF and UBL XML attachments</li>
+                  </ul>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    You can customize the email message before sending.
+                  </p>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">PEPPOL Sending</h3>
+                <p class="mt-4 text-secondary-700">
+                  When sending via the PEPPOL network, our platform:
+                </p>
+                <ul class="mt-2 list-disc pl-5 text-secondary-700">
+                  <li>Transmits the UBL XML invoice directly to the recipient's PEPPOL access point</li>
+                  <li>Provides a transmission receipt with a unique identifier</li>
+                  <li>Updates the invoice status in Reckon One</li>
+                </ul>
+
+                <div class="mt-4 bg-secondary-50 rounded-lg p-4">
+                  <h4 class="text-md font-medium text-secondary-900">PEPPOL Requirements</h4>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    To send via PEPPOL, you need the recipient's:
+                  </p>
+                  <ul class="mt-2 text-sm list-disc pl-5 text-secondary-700">
+                    <li>PEPPOL Participant ID (usually their ABN with a prefix)</li>
+                    <li>Document type identifier (for invoices: urn:oasis:names:specification:ubl:schema:xsd:Invoice-2)</li>
+                    <li>Process identifier (for invoices: urn:fdc:peppol.eu:2017:poacc:billing:01:1.0)</li>
+                  </ul>
+                  <p class="mt-2 text-sm text-secondary-700">
+                    Our platform can look up the recipient's PEPPOL details using their ABN.
+                  </p>
+                </div>
+              </section>
+
+              <!-- SME Guidelines Section -->
+              <section id="sme-guidelines" class="mb-16">
+                <h2 class="text-2xl font-bold text-secondary-900 tracking-tight">SME Guidelines</h2>
+                <p class="mt-4 text-lg text-secondary-500">
+                  This section provides practical guidelines for small and medium-sized enterprises (SMEs) on how to effectively use our e-invoicing platform.
+                </p>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Getting Started</h3>
+                <div class="mt-4 space-y-4 text-secondary-700">
+                  <p>
+                    To get started with e-invoicing, follow these steps:
+                  </p>
+                  <ol class="list-decimal pl-5">
+                    <li>Register for an account on our platform</li>
+                    <li>Connect your Reckon One account</li>
+                    <li>Set up your business profile with your ABN and other details</li>
+                    <li>Create your first e-invoice using the manual form or CSV upload</li>
+                    <li>Send the validated e-invoice to your customer</li>
+                  </ol>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Benefits of E-Invoicing</h3>
+                <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="relative rounded-lg border border-secondary-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-secondary-400">
+                    <div class="flex-shrink-0">
+                      <svg class="h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-secondary-900">Faster Payments</p>
+                      <p class="text-sm text-secondary-500">Receive payments up to 5 days faster with e-invoicing</p>
+                    </div>
+                  </div>
+
+                  <div class="relative rounded-lg border border-secondary-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-secondary-400">
+                    <div class="flex-shrink-0">
+                      <svg class="h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-secondary-900">Reduced Fraud Risk</p>
+                      <p class="text-sm text-secondary-500">Secure transmission with validation reduces fraud risk</p>
+                    </div>
+                  </div>
+
+                  <div class="relative rounded-lg border border-secondary-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-secondary-400">
+                    <div class="flex-shrink-0">
+                      <svg class="h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-secondary-900">Increased Efficiency</p>
+                      <p class="text-sm text-secondary-500">Reduce manual data entry and processing time</p>
+                    </div>
+                  </div>
+
+                  <div class="relative rounded-lg border border-secondary-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-secondary-400">
+                    <div class="flex-shrink-0">
+                      <svg class="h-10 w-10 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-secondary-900">Environmental Impact</p>
+                      <p class="text-sm text-secondary-500">Reduce paper usage and carbon footprint</p>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Best Practices</h3>
+                <div class="mt-4 space-y-4 text-secondary-700">
+                  <h4 class="text-lg font-medium text-secondary-900">1. Ensure Data Accuracy</h4>
+                  <p>
+                    Accurate data is crucial for successful e-invoicing. Double-check the following information:
+                  </p>
+                  <ul class="list-disc pl-5">
+                    <li>Customer ABN or other business identifier</li>
+                    <li>Invoice line items, quantities, and prices</li>
+                    <li>Tax calculations and codes</li>
+                    <li>Payment terms and bank details</li>
+                  </ul>
+
+                  <h4 class="text-lg font-medium text-secondary-900">2. Regular Reconciliation</h4>
+                  <p>
+                    Regularly reconcile your e-invoices with your Reckon One accounting system to ensure all invoices are properly recorded and tracked.
+                  </p>
+
+                  <h4 class="text-lg font-medium text-secondary-900">3. Monitor Invoice Status</h4>
+                  <p>
+                    Use the dashboard to monitor the status of your e-invoices. Follow up on any invoices that show errors or have not been delivered.
+                  </p>
+
+                  <h4 class="text-lg font-medium text-secondary-900">4. Keep Your Information Updated</h4>
+                  <p>
+                    Ensure your business information is always up-to-date, including contact details, bank accounts, and tax registrations.
+                  </p>
+                </div>
+
+                <h3 class="mt-8 text-xl font-medium text-secondary-900">Frequently Asked Questions</h3>
+                <div class="mt-4 space-y-4">
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">What is UBL XML?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      Universal Business Language (UBL) XML is a standardized XML format for business documents, including invoices. It's the format used for e-invoicing in Australia and many other countries.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">What is the PEPPOL network?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      PEPPOL (Pan-European Public Procurement Online) is a network that enables businesses to exchange electronic documents, including e-invoices, in a standardized way. Australia has adopted PEPPOL for e-invoicing.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">Do I need to register for PEPPOL?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      No, our platform handles the PEPPOL connection for you. You only need to register on our platform and connect your Reckon One account.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">Can I still send PDF invoices?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      Yes, when sending invoices by email, our platform automatically attaches a PDF version along with the UBL XML file.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">What if my customer doesn't support e-invoicing?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      You can still send the invoice by email with a PDF attachment. The customer can view and process the PDF invoice as usual.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">How do I know if my invoice was delivered?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      Our platform provides delivery status updates for both email and PEPPOL transmissions. You can check the status of your invoices on the dashboard.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 class="text-lg font-medium text-secondary-900">What is the bookId in Reckon One?</h4>
+                    <p class="mt-2 text-secondary-700">
+                      The bookId is a unique identifier for your business data in Reckon One. It's required for all API calls to Reckon One. You can find your bookId in the Reckon One dashboard or through our platform's settings page.
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Identifier - Outside the frame -->
+<div class="page-identifier">
+  <div>404 Error Page</div>
+</div>
+
+<!-- Route Indicator - Outside the frame -->
+<div class="route-indicator">
+  Route: /404
+</div>
+
+<!-- Design Notes - Outside the frame -->
+<div class="design-notes">
+  <h3>Design Notes</h3>
+  <p>This 404 page maintains the clean, professional aesthetic of the platform while providing a friendly error message and helpful navigation options. The design includes:</p>
+  <ul>
+    <li>Clear error messaging that's approachable rather than technical</li>
+    <li>Illustration to soften the error experience</li>
+    <li>Quick navigation links to key sections of the platform</li>
+    <li>Search functionality to help users find what they're looking for</li>
+  </ul>
+</div>
+
+<div class="figma-frame">
+  <!-- 404 Page Container -->
+  <div class="min-h-screen bg-white">
+    <!-- Top Navigation -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <div class="w-8 h-8 relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-blue-600 rounded-md shadow-sm"></div>
+              </div>
+              <span class="ml-2 text-xl font-semibold text-secondary-900">E-Invoicing Platform</span>
+            </div>
+            <!-- Navigation Links -->
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/dashboard" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Dashboard
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Invoices
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                API Docs
+              </a>
+              <a href="#" class="border-transparent text-secondary-500 hover:border-secondary-300 hover:text-secondary-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                Settings
+              </a>
+            </div>
+          </div>
+          <!-- User Menu -->
+          <div class="flex items-center">
+            <div class="ml-3 relative">
+              <div>
+                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                  <span class="sr-only">Open user menu</span>
+                  <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700">
+                    <span>JD</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 404 Content -->
+    <div class="bg-white min-h-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+      <div class="max-w-max mx-auto">
+        <main class="sm:flex">
+          <p class="text-4xl font-extrabold text-primary-600 sm:text-5xl">404</p>
+          <div class="sm:ml-6">
+            <div class="sm:border-l sm:border-secondary-200 sm:pl-6">
+              <h1 class="text-4xl font-extrabold text-secondary-900 tracking-tight sm:text-5xl">Page not found</h1>
+              <p class="mt-3 text-base text-secondary-500">Sorry, we couldn't find the page you're looking for.</p>
+            </div>
+            <div class="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+              <a href="/dashboard" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                Go to Dashboard
+              </a>
+              <a href="/documentation" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary-700 bg-primary-100 hover:bg-primary-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+                View Documentation
+              </a>
+            </div>
+          </div>
+        </main>
+
+        <!-- Illustration -->
+        <div class="mt-12 flex justify-center">
+          <svg class="h-64 w-auto text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" fill="none">
+            <path d="M300 328.5C391.127 328.5 465 254.627 465 163.5C465 72.3731 391.127 -1.5 300 -1.5C208.873 -1.5 135 72.3731 135 163.5C135 254.627 208.873 328.5 300 328.5Z" fill="#F3F4F6"/>
+            <path d="M126 379.5H474" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round"/>
+            <path d="M284 379.5C284 371.492 290.492 365 298.5 365H301.5C309.508 365 316 371.492 316 379.5V379.5H284V379.5Z" fill="#D1D5DB"/>
+            <path d="M372 235.5L372 187.5" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"/>
+            <path d="M372 171.5L372 123.5" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"/>
+            <path d="M228 235.5L228 187.5" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"/>
+            <path d="M228 171.5L228 123.5" stroke="#9CA3AF" stroke-width="4" stroke-linecap="round"/>
+            <path d="M259 211.5H341" stroke="#4B5563" stroke-width="8" stroke-linecap="round"/>
+            <path d="M259 147.5H341" stroke="#4B5563" stroke-width="8" stroke-linecap="round"/>
+            <path d="M259 179.5H341" stroke="#4B5563" stroke-width="8" stroke-linecap="round"/>
+            <path d="M228 259.5C228 253.425 232.925 248.5 239 248.5H361C367.075 248.5 372 253.425 372 259.5V379.5H228V259.5Z" fill="currentColor"/>
+            <path d="M269 314C275.075 314 280 308.851 280 302.5C280 296.149 275.075 291 269 291C262.925 291 258 296.149 258 302.5C258 308.851 262.925 314 269 314Z" fill="white"/>
+            <path d="M331 314C337.075 314 342 308.851 342 302.5C342 296.149 337.075 291 331 291C324.925 291 320 296.149 320 302.5C320 308.851 324.925 314 331 314Z" fill="white"/>
+            <path d="M300 346.5C311.046 346.5 320 337.546 320 326.5C320 315.454 311.046 306.5 300 306.5C288.954 306.5 280 315.454 280 326.5C280 337.546 288.954 346.5 300 346.5Z" fill="white"/>
+          </svg>
+        </div>
+
+        <!-- Search Box -->
+        <!-- <div class="mt-12 max-w-md mx-auto">
+          <div class="relative">
+            <label for="search" class="sr-only">Search</label>
+            <div class="flex rounded-md shadow-sm">
+              <div class="relative flex items-stretch flex-grow focus-within:z-10">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-secondary-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input type="text" name="search" id="search" class="focus:ring-primary-500 focus:border-primary-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-secondary-300" placeholder="Search for pages or features">
+              </div>
+              <button class="-ml-px relative inline-flex items-center space-x-2 px-4 py-2 border border-secondary-300 text-sm font-medium rounded-r-md text-secondary-700 bg-secondary-50 hover:bg-secondary-100 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500">
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Quick Links -->
+        <div class="mt-12">
+          <h2 class="text-sm font-medium text-secondary-500">Popular pages</h2>
+          <ul class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <li>
+              <a href="/dashboard" class="block hover:bg-secondary-50 rounded-lg p-3 border border-secondary-200">
+                <div class="flex items-center space-x-4">
+                  <div class="flex-shrink-0 h-8 w-8 bg-primary-100 rounded-md flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-secondary-900">Dashboard</p>
+                    <p class="text-xs text-secondary-500">View your invoice statistics and history</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="/create-invoice" class="block hover:bg-secondary-50 rounded-lg p-3 border border-secondary-200">
+                <div class="flex items-center space-x-4">
+                  <div class="flex-shrink-0 h-8 w-8 bg-primary-100 rounded-md flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-secondary-900">Create Invoice</p>
+                    <p class="text-xs text-secondary-500">Create a new invoice manually</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="/upload-invoice" class="block hover:bg-secondary-50 rounded-lg p-3 border border-secondary-200">
+                <div class="flex items-center space-x-4">
+                  <div class="flex-shrink-0 h-8 w-8 bg-primary-100 rounded-md flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-secondary-900">Upload CSV/Excel</p>
+                    <p class="text-xs text-secondary-500">Create invoices from spreadsheet</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="/documentation" class="block hover:bg-secondary-50 rounded-lg p-3 border border-secondary-200">
+                <div class="flex items-center space-x-4">
+                  <div class="flex-shrink-0 h-8 w-8 bg-primary-100 rounded-md flex items-center justify-center">
+                    <svg class="h-5 w-5 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-secondary-900">Documentation</p>
+                    <p class="text-xs text-secondary-500">View platform documentation</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <script>
     // Initialize AOS animations
         AOS.init({
