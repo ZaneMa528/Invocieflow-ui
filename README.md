@@ -1,4 +1,4 @@
-# E-Invoicing API Platform for SMEs - User Stories and Analysis
+# InvoiceFlow - E-Invoicing API Platform for SMEs 
 
 ## Project Overview
 
